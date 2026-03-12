@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Bogie - โครงการจำลอง 3 มิติ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160/examples/jsm/"
+      }
+    }
+    </script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #0a0f1e;
+            --navy-mid: #111827;
+            --navy-light: #1e293b;
+            --steel: #334155;
+            --accent: #38bdf8;
+            --accent2: #818cf8;
+            --gold: #f59e0b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(30,41,59,0.7);
+            --border: rgba(56,189,248,0.15);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background: var(--navy);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ─── NOISE TEXTURE OVERLAY ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+
+        /* ─── NAVBAR ─── */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10,15,30,0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            height: 64px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .nav-brand h1 {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+            position: relative;
+            padding-bottom: 4px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 1px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* ─── HAMBURGER ─── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            z-index: 1100;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(56,189,248,0.05);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            padding: 120px 40px 80px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .hero-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 40%, rgba(56,189,248,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 20% 80%, rgba(129,140,248,0.07) 0%, transparent 55%),
+                var(--navy);
+        }
+
+        /* Grid lines */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56,189,248,0.1);
+            border: 1px solid rgba(56,189,248,0.3);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero-title {
+            font-family: 'Sarabun', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            animation: fadeUp 0.8s 0.1s ease both;
+        }
+
+        .hero-title .line2 {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 480px;
+            line-height: 1.8;
+            animation: fadeUp 0.8s 0.2s ease both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            animation: fadeUp 0.8s 0.3s ease both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: var(--navy);
+            border: none;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Sarabun', sans-serif;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(56,189,248,0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-family: 'Sarabun', sans-serif;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeUp 0.8s 0.2s ease both;
+        }
+
+        /* Stats strip */
+        .stats-strip {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 40px;
+        }
+
+        .stats-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── SECTIONS COMMON ─── */
+        .section {
+            padding: 100px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Sarabun', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .section-line {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            margin-top: 16px;
+            border-radius: 2px;
+        }
+
+        /* ─── ABOUT ─── */
+        .about-bg { background: var(--navy-mid); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            transition: border-color 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .about-card:hover {
+            border-color: rgba(56,189,248,0.4);
+            transform: translateY(-4px);
+        }
+
+        .about-card:hover::before { transform: scaleX(1); }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .about-card h3 {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ─── MODELS GRID ─── */
+        .models-bg { background: var(--navy); }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .model-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .model-card:hover {
+            border-color: rgba(56,189,248,0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(56,189,248,0.1);
+        }
+
+        .model-preview {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #0f1929, #1e2d45);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-preview canvas { border-radius: 0; }
+
+        .model-num {
+            position: absolute;
+            top: 12px; right: 12px;
+            background: rgba(56,189,248,0.15);
+            border: 1px solid rgba(56,189,248,0.3);
+            color: var(--accent);
+            font-family: 'Sarabun', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .model-info {
+            padding: 20px;
+        }
+
+        .model-info h3 {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        .model-info p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 16px;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56,189,248,0.1);
+            color: var(--accent);
+            border: 1px solid rgba(56,189,248,0.3);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-family: 'Sarabun', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(56,189,248,0.2);
+            border-color: rgba(56,189,248,0.6);
+        }
+
+        .btn-secondary::after { content: '→'; }
+
+        /* ─── TEAM ─── */
+        .team-bg { background: var(--navy-mid); }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border: 3px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .team-member:hover .member-photo {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .team-member h3 {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .team-member p { color: var(--text-muted); font-size: 0.875rem; }
+
+        /* ─── CONTACT / FOOTER ─── */
+        .contact-section {
+            background: var(--navy-mid);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand p { color: var(--text-muted); font-size: 0.9rem; }
+
+        .footer-col h4 {
+            font-family: 'Sarabun', sans-serif;
+            color: white;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: var(--accent); }
+
+        .footer-col p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 8px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ─── CUBE ─── */
+        .placeholder-3d { perspective: 800px; }
+
+        .cube {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 12s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: rgba(56,189,248,0.05);
+            border: 1px solid rgba(56,189,248,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(56,189,248,0.8);
+            backdrop-filter: blur(4px);
+            letter-spacing: 2px;
+        }
+
+        .front  { transform: translateZ(90px); }
+        .back   { transform: rotateY(180deg) translateZ(90px); }
+        .left   { transform: rotateY(-90deg) translateZ(90px); }
+        .right  { transform: rotateY(90deg) translateZ(90px); }
+        .top    { transform: rotateX(90deg) translateZ(90px); }
+        .bottom { transform: rotateX(-90deg) translateZ(90px); }
+
+        @keyframes rotateCube {
+            0%   { transform: rotateX(15deg) rotateY(0); }
+            100% { transform: rotateX(15deg) rotateY(360deg); }
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container { padding: 0 20px; }
+
+            .nav-menu {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                width: 100%;
+                background: rgba(10,15,30,0.97);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-120%);
+                transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+                z-index: 999;
+            }
+
+            .nav-menu.active { transform: translateY(0); }
+
+            .nav-menu li { border-bottom: 1px solid var(--border); }
+            .nav-menu li:last-child { border-bottom: none; }
+
+            .nav-link {
+                display: block;
+                padding: 14px 0;
+                font-size: 1rem;
+            }
+
+            .hamburger { display: flex; }
+
+            .hero {
+                flex-direction: column;
+                padding: 100px 20px 60px;
+                text-align: center;
+            }
+
+            .hero-cta { justify-content: center; }
+            .hero-visual { margin-top: 40px; }
+
+            .section { padding: 60px 20px; }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-inner { padding: 40px 20px 24px; }
+
+            .stats-strip { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero-bg"></div>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="container">
+        <div class="nav-brand">
+            <div class="nav-brand-icon">⚙️</div>
+            <h1>3D BOGIE</h1>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home" class="nav-link active">หน้าแรก</a></li>
+            <li><a href="#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+            <li><a href="#models" class="nav-link">โมเดล 3D</a></li>
+            <li><a href="#team" class="nav-link">ทีมงาน</a></li>
+            <li><a href="#contact" class="nav-link">ติดต่อ</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section id="home">
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Interactive 3D Learning</div>
+            <h1 class="hero-title">
+                โครงการจำลอง<br>
+                <span class="line2">3D Bogie</span>
+            </h1>
+            <p class="hero-subtitle">นวัตกรรมการเรียนรู้ระบบล้อเลื่อนรถไฟด้วยเทคโนโลยี 3 มิติ สำรวจชิ้นส่วนทุกชิ้นแบบ Interactive</p>
+            <div class="hero-cta">
+                <button class="btn-primary" onclick="document.getElementById('models').scrollIntoView({behavior:'smooth'})">เริ่มต้นเรียนรู้</button>
+                <button class="btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">เกี่ยวกับโครงการ</button>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="placeholder-3d">
+                <div class="cube">
+                    <div class="face front">3D</div>
+                    <div class="face back">BOGIE</div>
+                    <div class="face left">MODEL</div>
+                    <div class="face right">TECH</div>
+                    <div class="face top">LEARN</div>
+                    <div class="face bottom">BUILD</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Strip -->
+<div class="stats-strip">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-num">17</div>
+            <div class="stat-label">ชิ้นส่วน 3D</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">360°</div>
+            <div class="stat-label">หมุนดูได้รอบทิศ</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">UIC</div>
+            <div class="stat-label">มาตรฐานสากล</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">3D</div>
+            <div class="stat-label">Interactive Viewer</div>
+        </div>
+    </div>
+</div>
+
+<!-- About -->
+<section id="about">
+    <div class="about-bg" style="background:var(--navy-mid); margin:0; padding:0;">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-tag" aria-setsize="20">About</div>
+                <h2 class="section-title">เกี่ยวกับโครงการ</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">🚂</div>
+                    <h3>ระบบ Bogie</h3>
+                    <p>เรียนรู้โครงสร้างและการทำงานของระบบล้อเลื่อนรถไฟแบบละเอียด</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">💻</div>
+                    <h3>เทคโนโลยี 3D</h3>
+                    <p>ใช้เทคโนโลยีการแสดงผล 3 มิติที่ทันสมัยด้วย Three.js</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">📚</div>
+                    <h3>การเรียนรู้</h3>
+                    <p>ส่งเสริมการเรียนรู้แบบ Interactive หมุนและซูมได้ทุกมุมมอง</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🔧</div>
+                    <h3>การประยุกต์ใช้</h3>
+                    <p>นำความรู้ไปประยุกต์ใช้ในงานซ่อมบำรุงและวิศวกรรมจริง</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Models -->
+<section id="models">
+    <div class="section">
+        <div class="section-header">
+            <div class="section-tag">Components</div>
+            <h2 class="section-title">โมเดล 3D</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="models-grid">
+            <div class="model-card">
+                <div class="model-preview" id="model1"><span class="model-num">01</span></div>
+                <div class="model-info">
+                    <h3>Bolster</h3>
+                    <p>คานรับน้ำหนักหลักของตู้รถไฟ</p>
+                    <a href="model01.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model2"><span class="model-num">02</span></div>
+                <div class="model-info">
+                    <h3>Axle Spring</h3>
+                    <p>สปริงรองรับน้ำหนักเพลา</p>
+                    <a href="model02.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model3"><span class="model-num">03</span></div>
+                <div class="model-info">
+                    <h3>Air Spring</h3>
+                    <p>ถุงลมรองรับแรงสั่นสะเทือน</p>
+                    <a href="model03.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model4"><span class="model-num">04</span></div>
+                <div class="model-info">
+                    <h3>Axle Box</h3>
+                    <p>กล่องรองรับตลับลูกปืนเพลา</p>
+                    <a href="model04.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model5"><span class="model-num">05</span></div>
+                <div class="model-info">
+                    <h3>Bogie Frame</h3>
+                    <p>โครงสร้างหลักของโบกี้</p>
+                    <a href="model05.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model6"><span class="model-num">06</span></div>
+                <div class="model-info">
+                    <h3>Gears</h3>
+                    <p>ระบบเฟืองส่งกำลัง</p>
+                    <a href="model06.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model7"><span class="model-num">07</span></div>
+                <div class="model-info">
+                    <h3>Traction Motor</h3>
+                    <p>มอเตอร์ขับเคลื่อนรถไฟ</p>
+                    <a href="model07.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model8"><span class="model-num">08</span></div>
+                <div class="model-info">
+                    <h3>Centre Pivot</h3>
+                    <p>จุดหมุนกลางของโบกี้</p>
+                    <a href="model08.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model9"><span class="model-num">09</span></div>
+                <div class="model-info">
+                    <h3>Wheelset</h3>
+                    <p>ชุดล้อและเพลารถไฟ</p>
+                    <a href="model09.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model10"><span class="model-num">10</span></div>
+                <div class="model-info">
+                    <h3>Centre Plate</h3>
+                    <p>แผ่นรองจุดหมุนกลาง</p>
+                    <a href="model10.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model11"><span class="model-num">11</span></div>
+                <div class="model-info">
+                    <h3>Shock Absorber</h3>
+                    <p>โช้คอัพดูดซับแรงกระแทก</p>
+                    <a href="model11.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model12"><span class="model-num">12</span></div>
+                <div class="model-info">
+                    <h3>Brake Disc</h3>
+                    <p>จานเบรกระบบเบรก</p>
+                    <a href="model12.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model13"><span class="model-num">13</span></div>
+                <div class="model-info">
+                    <h3>Brake Caliper</h3>
+                    <p>คาลิเปอร์หนีบจานเบรก</p>
+                    <a href="model13.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model14"><span class="model-num">14</span></div>
+                <div class="model-info">
+                    <h3>Side Bearer</h3>
+                    <p>แบกตัวรับแรงด้านข้าง</p>
+                    <a href="model14.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model15"><span class="model-num">15</span></div>
+                <div class="model-info">
+                    <h3>Anti-Roll Bar</h3>
+                    <p>แกนต้านการโคลงตัว</p>
+                    <a href="model15.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model16"><span class="model-num">16</span></div>
+                <div class="model-info">
+                    <h3>Yaw Damper</h3>
+                    <p>ตัวหน่วงการส่ายหัว</p>
+                    <a href="model16.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+            <div class="model-card">
+                <div class="model-preview" id="model17"><span class="model-num">17</span></div>
+                <div class="model-info">
+                    <h3>Composite Brake Block</h3>
+                    <p>ก้อนเบรกคอมโพสิต</p>
+                    <a href="model17.html"><button class="btn-secondary">ดูโมเดล</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section id="team">
+    <div class="team-bg" style="background:var(--navy-mid); margin:0; padding:0;">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-tag">Team</div>
+                <h2 class="section-title">ทีมพัฒนา</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">👤</div>
+                    <h3>ชื่อสมาชิก 1</h3>
+                    <p>ตำแหน่ง</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">👤</div>
+                    <h3>ชื่อสมาชิก 2</h3>
+                    <p>ตำแหน่ง</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">👤</div>
+                    <h3>ชื่อสมาชิก 3</h3>
+                    <p>ตำแหน่ง</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact / Footer -->
+<section id="contact" class="contact-section">
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>3D BOGIE PROJECT</h3>
+                <p>โครงการพัฒนาสื่อการเรียนรู้ 3 มิติ<br>สำหรับระบบล้อเลื่อนรถไฟ</p>
+            </div>
+            <div class="footer-col">
+                <h4>ลิงก์</h4>
+                <ul>
+                    <li><a href="#">เอกสารประกอบ</a></li>
+                    <li><a href="#">วิดีโอสอนใช้งาน</a></li>
+                    <li><a href="#">ดาวน์โหลดโมเดล</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>ติดต่อ</h4>
+                <p>📧 contact@3dbogie.edu</p>
+                <p>📞 02-XXX-XXXX</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 3D Bogie Project. All rights reserved.</p>
+            <p>Powered by Three.js</p>
+        </div>
+    </div>
+</section>
+
+<!-- ✅ Hamburger Script — ปกติ ไม่ใช่ module -->
+<script>
+    var hamburger = document.getElementById("hamburger");
+    var navMenu = document.getElementById("navMenu");
+
+    hamburger.addEventListener("touchstart", function(e) {
+        e.preventDefault();
+        hamburger.classList.toggle("open");
+        navMenu.classList.toggle("active");
+    }, { passive: false });
+
+    hamburger.addEventListener("click", function() {
+        hamburger.classList.toggle("open");
+        navMenu.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-link").forEach(function(link) {
+        link.addEventListener("click", function() {
+            hamburger.classList.remove("open");
+            navMenu.classList.remove("active");
+        });
+    });
+
+    document.addEventListener("click", function(e) {
+        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+            hamburger.classList.remove("open");
+            navMenu.classList.remove("active");
+        }
+    });
+</script>
+
+<!-- 3D Models Script — module -->
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
