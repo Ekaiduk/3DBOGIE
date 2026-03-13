@@ -711,12 +711,18 @@
                 padding: 20px;
                 gap: 0;
                 border-bottom: 1px solid var(--border);
-                transform: translateY(-120%);
-                transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transition: opacity 0.25s ease, visibility 0.25s ease;
                 z-index: 999;
             }
 
-            .nav-menu.active { transform: translateY(0); }
+            .nav-menu.active {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
 
             .nav-menu li { border-bottom: 1px solid var(--border); }
             .nav-menu li:last-child { border-bottom: none; }
