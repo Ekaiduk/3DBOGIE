@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Anatomy 3D - โครงการจำลอง 3 มิติ</title>
     
-    <link href="https://www.youtubeeducation.com/embed/B5wqRAHrfy8" rel="stylesheet" title="project" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
     <!--
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     -->
@@ -638,44 +638,52 @@
             font-size: 0.8rem;
         }
 
-        /* ─── CUBE ─── */
-        .placeholder-3d { perspective: 800px; }
-
-        .cube {
-            width: 180px;
-            height: 180px;
+        /* ─── HERO 3D MODEL CANVAS ─── */
+        /* 👇 ปรับขนาดโมเดล Hero ได้ที่นี่เลย */
+        .placeholder-3d {
+            width:  560px;   /* ◀ เปลี่ยนความกว้าง */
+            height: 560px;   /* ◀ เปลี่ยนความสูง  */
             position: relative;
-            transform-style: preserve-3d;
-            animation: rotateCube 12s infinite linear;
+            border-radius: 16px;
+            overflow: hidden;
+            background: transparent;
         }
 
-        .face {
+        #heroCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .model-loading-text {
             position: absolute;
-            width: 180px;
-            height: 180px;
-            background: rgba(56,189,248,0.05);
-            border: 1px solid rgba(56,189,248,0.3);
+            inset: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: 'Sarabun', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: rgba(56,189,248,0.8);
-            backdrop-filter: blur(4px);
-            letter-spacing: 2px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            gap: 12px;
+            pointer-events: none;
         }
 
-        .front  { transform: translateZ(90px); }
-        .back   { transform: rotateY(180deg) translateZ(90px); }
-        .left   { transform: rotateY(-90deg) translateZ(90px); }
-        .right  { transform: rotateY(90deg) translateZ(90px); }
-        .top    { transform: rotateX(90deg) translateZ(90px); }
-        .bottom { transform: rotateX(-90deg) translateZ(90px); }
+        .model-loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 2px solid rgba(56,189,248,0.2);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
 
-        @keyframes rotateCube {
-            0%   { transform: rotateX(15deg) rotateY(0); }
-            100% { transform: rotateX(15deg) rotateY(360deg); }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            /* 👇 ขนาดบนมือถือ */
+            .placeholder-3d { width: 320px; height: 320px; }
         }
 
         /* ─── ANIMATIONS ─── */
@@ -786,13 +794,10 @@
         </div>
         <div class="hero-visual">
             <div class="placeholder-3d">
-                <div class="cube">
-                    <div class="face front">3D</div>
-                    <div class="face back">BOGIE</div>
-                    <div class="face left">MODEL</div>
-                    <div class="face right">TECH</div>
-                    <div class="face top">LEARN</div>
-                    <div class="face bottom">BUILD</div>
+                <canvas id="heroCanvas"></canvas>
+                <div class="model-loading-text" id="heroLoading">
+                    <div class="model-loading-spinner"></div>
+                    <span>กำลังโหลดโมเดล 3D...</span>
                 </div>
             </div>
         </div>
@@ -1064,6 +1069,155 @@
     </div>
 </section>
 -->
+<!-- Hero 3D Model — mainmodel.glb -->
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader }    from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+(function initHeroModel() {
+    const canvas  = document.getElementById('heroCanvas');
+    const loading = document.getElementById('heroLoading');
+    const wrap    = canvas.parentElement;
+
+    // ── Renderer ──
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputColorSpace    = THREE.SRGBColorSpace;
+    renderer.toneMapping         = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
+
+    const scene  = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 1000);
+
+    // ── ไฟสีขาวล้วน → แสดงสีจริงของโมเดล ──
+    scene.add(new THREE.AmbientLight(0xffffff, 2.0));
+    [
+        { pos: [ 5,  8,  5], int: 2.0 },
+        { pos: [-5,  4, -4], int: 1.5 },
+        { pos: [ 0, -4,  4], int: 1.0 },
+        { pos: [ 3,  2, -6], int: 0.8 },
+    ].forEach(({ pos, int }) => {
+        const l = new THREE.DirectionalLight(0xffffff, int);
+        l.position.set(...pos);
+        scene.add(l);
+    });
+
+    // ── OrbitControls (ลากหมุนเองได้ด้วย) ──
+    const controls = new OrbitControls(camera, canvas);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.07;
+    controls.enableZoom    = true;
+    controls.enablePan     = false;
+
+    // ── ตัวแปรหมุนอัตโนมัติ ──
+    // 👇 ปรับความเร็วได้ที่นี่ (องศา/วินาที)
+    const ROTATE_SPEED_DEG = 45;
+
+    let pivot      = null;
+    let modelDist  = 5;
+
+    // โหมดหมุน: 0=Y ขวา, 1=X ลง, 2=Y ซ้าย, 3=X ขึ้น
+    let phase      = 0;
+    let phaseAngle = 0;           // องศาสะสมใน phase นี้
+    const PHASE_DEG = 360;        // ครบ 360° ค่อยเปลี่ยน phase
+
+    const phaseAxis = [
+        new THREE.Vector3(0, 1, 0),   // phase 0: หมุน Y+
+        new THREE.Vector3(1, 0, 0),   // phase 1: หมุน X+
+        new THREE.Vector3(0, 1, 0),   // phase 2: หมุน Y- (speed ลบ)
+        new THREE.Vector3(1, 0, 0),   // phase 3: หมุน X- (speed ลบ)
+    ];
+    const phaseSign = [1, 1, -1, -1];
+
+    // ── โหลดโมเดล ──
+    const loader = new GLTFLoader();
+    loader.load(
+        '3D/mainmodel.glb',
+        (gltf) => {
+            const model = gltf.scene;
+
+            // รีเซ็ต material → สีจริง
+            model.traverse(node => {
+                if (node.isMesh) {
+                    const mats = Array.isArray(node.material) ? node.material : [node.material];
+                    mats.forEach(m => { m.envMapIntensity = 0; m.needsUpdate = true; });
+                }
+            });
+
+            // Center & fit
+            const box    = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            const size   = box.getSize(new THREE.Vector3());
+            const maxDim = Math.max(size.x, size.y, size.z);
+            model.position.sub(center);
+
+            pivot = new THREE.Group();
+            pivot.add(model);
+            scene.add(pivot);
+
+            // วาง camera
+            const fovRad  = camera.fov * (Math.PI / 180);
+            modelDist     = (maxDim / 2) / Math.tan(fovRad / 2) * 1.7;
+            camera.position.set(0, maxDim * 0.15, modelDist);
+            controls.target.set(0, 0, 0);
+            controls.minDistance = modelDist * 0.3;
+            controls.maxDistance = modelDist * 4;
+            controls.update();
+
+            loading.style.display = 'none';
+            animate();
+        },
+        undefined,
+        err => {
+            console.warn('mainmodel.glb load error:', err);
+            loading.innerHTML = '<span style="color:#f59e0b">⚠ ไม่พบไฟล์ mainmodel.glb</span>';
+        }
+    );
+
+    // ── Resize ──
+    const ro = new ResizeObserver(() => {
+        const w = wrap.clientWidth, h = wrap.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+    });
+    ro.observe(wrap);
+
+    // ── หยุดหมุนเมื่อผู้ใช้ลาก ──
+    let userDragging = false;
+    controls.addEventListener('start', () => userDragging = true);
+    controls.addEventListener('end',   () => {
+        setTimeout(() => userDragging = false, 1200); // หน่วง 1.2s แล้วหมุนต่อ
+    });
+
+    // ── Animation loop ──
+    let lastTime = performance.now();
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        const now   = performance.now();
+        const delta = Math.min((now - lastTime) / 1000, 0.05); // วินาที, cap 50ms
+        lastTime = now;
+
+        if (pivot && !userDragging) {
+            const step = THREE.MathUtils.degToRad(ROTATE_SPEED_DEG * delta) * phaseSign[phase];
+            pivot.rotateOnWorldAxis(phaseAxis[phase], step);
+
+            phaseAngle += ROTATE_SPEED_DEG * delta;
+            if (phaseAngle >= PHASE_DEG) {
+                phaseAngle = 0;
+                phase = (phase + 1) % 4;   // เปลี่ยน phase
+            }
+        }
+
+        controls.update();
+        renderer.render(scene, camera);
+    }
+})();
+</script>
+
 <!-- ✅ Hamburger Script — ปกติ ไม่ใช่ module -->
 <script>
     var hamburger = document.getElementById("hamburger");
