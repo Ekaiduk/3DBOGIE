@@ -138,6 +138,8 @@ body::before {
 .model-detail p { color: var(--text-muted); margin-bottom: 10px; }
 .model-detail ul { padding-left: 20px; color: var(--text-muted); line-height: 2; }
 .model-detail ul li { margin-bottom: 4px; }
+.model-detail ol { padding-left: 20px; color: var(--text-muted); line-height: 2; }
+.model-detail ol li {margin-bottom: 4px;}
 .back-btn {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(56,189,248,0.1); color: var(--accent);

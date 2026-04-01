@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Model - Gears</title>
+<title>Model - Traction Motor</title>
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 <script type="importmap">
@@ -31,21 +31,21 @@
 
                 <ul class="dropdown-menu">
                 <li><a href="model01.html">Bolster</a></li>
-                <li><a href="model02.html">Axle Spring</a></li>
-                <li><a href="model03.html">Air Spring</a></li>
-                <li><a href="model04.html">Axle Box</a></li>
-                <li><a href="model05.html">Bogie Frame</a></li>
+                <li><a href="model02.html">Axle Box</a></li>
+                <li><a href="model03.html">Axle Spring</a></li>
+                <li><a href="model04.html">Bogie Frame</a></li>
+                <li><a href="model05.html">Gears</a></li>
 
-                <li><a href="model07.html">Traction Motor</a></li>
-                <li><a href="model08.html">Centre Pivot</a></li>
-                <li><a href="model09.html">Wheelset</a></li>
-                <li><a href="model10.html">Centre Plate</a></li>
-                <li><a href="model11.html">Shock Absorber</a></li>
-                <li><a href="model12.html">Brake Disc</a></li>
-                <li><a href="model13.html">Brake Caliper</a></li>
-                <li><a href="model14.html">Side Bearer</a></li>
-                <li><a href="model15.html">Anti-Roll Bar</a></li>
-                <li><a href="model16.html">Yaw Damper</a></li>
+                <li><a href="model07.html">Center Pivot</a></li>
+                <li><a href="model08.html">Wheelset</a></li>
+                <li><a href="model09.html">Air spring</a></li>
+                <li><a href="model10.html">Centre plate</a></li>
+                <li><a href="model11.html">Brake Disc</a></li>
+                <li><a href="model12.html">Brake Caliper/Actuator</a></li>
+                <li><a href="model13.html">Yaw Damper</a></li>
+                <li><a href="model14.html">Anti-roll Bar</a></li>
+                <li><a href="model15.html">Shock Absorber</a></li>
+                <li><a href="model16.html">Side Bearer / Side Bearer Pad</a></li>
                 <li><a href="model17.html">Composite Brake Block</a></li>
         </ul>
 
@@ -59,11 +59,11 @@
 
 <div class="model-page">
     <div class="breadcrumb">
-        <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Gears
+        <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Traction Motor
     </div>
     <div class="page-header">
-        <h1>Gears</h1>
-        <span class="part-badge">Part 06</span>
+        <h1>Traction Motor</h1>
+        <span class="part-badge">Part 07</span>
     </div>
     <div class="model-viewer" id="model1">
         <div class="loading-overlay" id="loadingOverlay">
@@ -73,17 +73,17 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Gears</h2>
+        <h2>รายละเอียดของ Traction Motor</h2>
         
-        <h3>หน้าที่ของ Gears</h3>
-        <p>Gears เป็นระบบส่งถ่ายกำลังด้วยเฟือง ทำหน้าที่ส่งถ่ายกำลังจากมอเตอร์ลากจูง (Traction Motor) สู่เพลาล้อ ซึ่งจะมีอัตราทดคงที่ และมีการหล่อลื่นด้วยน้ำมันภายใน</p>
+        <h3>หน้าที่ของ Traction Motor</h3>
+        <p>เป็นต้นกำลังในการขับเคลื่อนรถไฟฟ้า ให้เคลื่อนที่ด้วยความเร็วต่างๆ และทำหน้าที่เป็น Electric Brake (อิเล็กทริก เบรก) (เบรกทางไฟฟ้า)</p>
         <h3>ค่ามาตรฐาน</h3>
         <ul>
-            <li>DIN 17200–17240 — Alloy steels for gears</li>
-            <li>DIN 3990 — Strength calculation for cylindrical gears</li>
-            <li>EN 10083 — Alloy steel for heat treatment</li>
-            <li>เกรดที่นิยม: 16MnCr5, 18CrNiMo7-6, 20MnCr5</li>
-            <li>Hardness หลังชุบแข็ง: HRC 55–62</li>
+            <p>Steel / Alloy Steel</p>
+            <li>EN 10083 — Alloy Steel for heat treatment (Rotor Shaft, Gear Shaft)</li>
+            <p>เกรด: 20Cr, 42CrMo4, 34CrNiMo6</p>
+            <li>SAE 4140 / 4340 / 8620 — Alloy steel สำหรับ shaft, rotor</li>
+            <li>GB/T 3077 / GB/T 11352 — Alloy steel / Cast steel สำหรับ housing</li>
         </ul>
         <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
     </div>
@@ -150,9 +150,9 @@ new GLTFLoader().load("./3D/model6.glb",
         camera.updateProjectionMatrix();
 
         camera.position.set(
-            center.x + maxDim * 0.2,
-            center.y + maxDim * 0.2,
-            center.z + maxDim * 1.0
+            center.x + maxDim * 0.6,
+            center.y + maxDim * 0.4,
+            center.z + maxDim * 0.7
         );
         controls.target.copy(center);
         controls.update();
