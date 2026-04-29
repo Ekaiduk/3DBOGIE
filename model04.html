@@ -21,11 +21,11 @@
     <div class="container">
         <a href="index.html" class="nav-brand">
             <div class="nav-brand-icon">⚙️</div>
-            <h1>QR Anatomy 3D</h1>
+            <h1>Bogie 3D Explorer</h1>
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+            <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,8 +62,8 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Bogie Frame
     </div>
     <div class="page-header">
-        <h1>Bogie Frame</h1>
-        <span class="part-badge">Part 05</span>
+        <h1>Bogie Frame - โครงแคร่ล้อ (โครงสร้างหลักของแคร่ล้อ)</h1>
+        <span class="part-badge">Part 04</span>
     </div>
     <div class="model-viewer" id="model1">
         <div class="loading-overlay" id="loadingOverlay">
@@ -73,21 +73,40 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Bogie Frame</h2>
+        <div class="header-row">
+    <h2>รายละเอียดของ Bogie Frame</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdULPwf1TVyT6tNGpBNReHLdhSO_h21hGj5HymQCEaRDx1j2Q/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
         
-        <h3>หน้าที่ของ Bogie Frame</h3>
-        <p>เป็นโครงสร้างหลักของโบกี้ หรือเป็นแชทซี (Chassis) ส่วนใหญ่ถูกออกแบบให้มีลักษณะคล้ายกับรูปตัว H โดยการออกแบบมักมุ่งเน้นไปที่การถูกนำไปใช้งานตามความเร็วของรถไฟฟ้า จุดประสงค์หลักเพื่อความแข็งแรงและดูดซับส่งผ่านแรงที่ผ่านจากล้อรถไฟฟ้าเข้าสู่ตัวรถไฟฟ้าทำให้รถไฟฟ้าเคลื่อนที่ได้</p>
-        <h3>ค่ามาตรฐาน</h3>
-        <p>✔ EN 10293 — Steel Castings</p>
-        <ul>
-            
-            <li>GS-20Mn5 (ทนกระแทกดี เหนียวสูง)</li>
-            <li>GS-25Mn5</li>
-            <li>GS-25CrMo4 (Grade สูง ใช้ในรถความเร็วสูง)</li>
-            
-        </ul>
-        <p>✔ UIC 615-4 — Cast Steel for Railway Bogie Parts</p>
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <h3>หน้าที่และหลักการทางวิศวกรรมของ Bogie Frame (โครงแคร่ล้อ)</h3>
+<p>ในวิศวกรรมล้อเลื่อน Bogie Frame (โครงแคร่ล้อ) เปรียบเสมือน "กระดูกสันหลัง" หรือ "แชสซี" (Chassis) ของระบบขับเคลื่อนรถไฟฟ้า เป็นโครงสร้างพื้นฐานที่ทำหน้าที่ยึดโยงอุปกรณ์ทุกอย่างเข้าด้วยกัน และเป็นตัวกลางในการส่งผ่านแรงมหาศาลระหว่างล้อกับตัวรถ หน้าที่และคุณลักษณะทางวิศวกรรมที่สำคัญมีดังนี้:</p>
+<p>1. การเป็นโครงสร้างรองรับหลัก (Structural Support & Component Integration)</p> 
+<ul>
+    <li>ฐานติดตั้งอุปกรณ์: Bogie Frame เป็นจุดติดตั้งถาวรของอุปกรณ์สำคัญ ได้แก่ มอเตอร์ขับเคลื่อน (Traction Motor), ชุดเกียร์ (Gearbox), ระบบเบรก (Brake Calipers/Units), ระบบกันสะเทือน (Suspension) รวมถึงชุดล้อและเพลา</li>
+    <li>การจัดการพื้นที่: การออกแบบมักเป็นรูปตัว H เพื่อให้มีพื้นที่ว่างตรงกลางสำหรับติดตั้งอุปกรณ์ส่งกำลัง และช่วยให้การกระจายน้ำหนัก (Weight Distribution) สมดุลในทุกล้อ</li>
+ </ul>
+ <p>2. การรับและส่งผ่านแรงใน 3 แกนหลัก (Tri-axial Force Transmission)</p>
+ <p>โครงแคร่ล้อต้องถูกออกแบบมาเพื่อจัดการกับแรงที่เกิดขึ้นตลอดเวลาในขณะที่รถไฟเคลื่อนที่</p>
+ <ul>
+    <li>แรงแนวดิ่ง (Vertical Load): รับน้ำหนักบรรทุกจากตัวรถและผู้โดยสารผ่านโบลสเตอร์ (Bolster) หรือเบาะลม และถ่ายเทลงสู่ระบบกันสะเทือนปฐมภูมิ</li>
+    <li>แรงแนวแกนยาว (Longitudinal Force): รับแรงดึง (Traction) จากมอเตอร์เพื่อเร่งความเร็ว และแรงเฉื่อยจากการเบรก (Braking Force) โดยแรงเหล่านี้จะถูกส่งผ่านโครงแคร่ไปยังตัวรถเพื่อให้รถเคลื่อนที่หรือหยุดอย่างพร้อมพูน</li>
+    <li>แรงแนวขวาง (Lateral Force): รับแรงเหวี่ยงหนีศูนย์กลางในขณะเข้าโค้ง และแรงกระแทกจากหน้าแปลนล้อที่กระทำกับราง เพื่อรักษาเสถียรภาพในการวิ่ง</li>
+ </ul>
+ <p>3. การออกแบบเพื่อพลศาสตร์และความเร็ว (Aerodynamics & Kinematics)</p>
+ <ul>
+    <li>ความแข็งเกร็งเทียบกับความยืดหยุ่น (Rigidity vs. Flexibility): โครงแคร่ต้องมีความแข็งเกร็ง (Stiffness) สูงพอที่จะรักษาตำแหน่งของล้อและเพลาให้อยู่ในแนวขนานเสมอ (Parallellism) เพื่อป้องกันการสะบัด (Hunting Oscillation) เมื่อวิ่งด้วยความเร็วสูง แต่ในขณะเดียวกันต้องยอมให้มีการบิดตัว (Torsional Flexibility) ได้เล็กน้อยเพื่อให้ล้อทุกล้อสัมผัสรางได้ตลอดเวลาแม้ในสภาพทางที่ไม่สมบูรณ์</li>
+    <li>การลดน้ำหนัก (Mass Optimization): วิศวกรต้องออกแบบโครงแคร่ให้มีน้ำหนักเบาที่สุด (Low Unsprung Mass) เพื่อลดแรงกระแทกต่อรางและประหยัดพลังงาน แต่ยังต้องคงความแข็งแรงตามมาตรฐานความปลอดภัย</li>
+</ul>
+<p>4. วิศวกรรมวัสดุและการผลิต (Materials & Manufacturing)</p>
+<ul>
+    <li>โครงสร้างแบบกล่องเชื่อมประกอบ (Welded Box Section): ส่วนใหญ่นิยมใช้เหล็กกล้าทนแรงดึงสูง (High-tensile Steel) มาเชื่อมประกอบเป็นโครงสร้างกลวงคล้ายกล่อง เพื่อให้ได้ค่าโมเมนต์ความเฉื่อยสูง (High Moment of Inertia) ซึ่งช่วยให้โครงสร้างทนต่อการบิดและดัดตัวได้ดีเยี่ยม</li>
+    <li>ความทนทานต่อการล้า (Fatigue Resistance): เนื่องจากโครงแคร่ต้องรับแรงสั่นสะเทือนต่อเนื่องตลอดอายุการใช้งาน 30-40 ปี การออกแบบรอยเชื่อม (Weld Design) และการทดสอบแบบไม่ทำลาย (NDT) จึงมีความสำคัญอย่างยิ่งเพื่อป้องกันการเกิดรอยร้าวจากการล้า</li>
+</ul>
+
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScbwDVKx79DxAS5-daze7O_E8Uf_T1xbGYOp82ZcJJzI05uvA/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 

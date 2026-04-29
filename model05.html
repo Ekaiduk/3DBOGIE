@@ -21,11 +21,11 @@
     <div class="container">
         <a href="index.html" class="nav-brand">
             <div class="nav-brand-icon">⚙️</div>
-            <h1>QR Anatomy 3D</h1>
+            <h1>Bogie 3D Explorer</h1>
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+           <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,8 +62,8 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Gears
     </div>
     <div class="page-header">
-        <h1>Gears</h1>
-        <span class="part-badge">Part 06</span>
+        <h1>Gears - ชุดเกียร์ทดรอบกำลัง</h1>
+        <span class="part-badge">Part 05</span>
     </div>
     <div class="model-viewer" id="model1">
         <div class="loading-overlay" id="loadingOverlay">
@@ -73,24 +73,38 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Gears</h2>
+        <div class="header-row">
+    <h2>รายละเอียดของ Gears</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScaoLg-_iWb9xRMmxJqtdu2MFUQ7vluWMPjvff026iKeSOLMQ/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
         
-        <h3>หน้าที่ของ Gears</h3>
-        <p>เป็นระบบส่งถ่ายกำลังด้วยเฟือง ทำหน้าที่ส่งถ่ายกำลังจากมอเตอร์ลากจูง (Traction Motor) (แทรกชัน มอเตอร์) สู่เพลาล้อ ซึ่งจะมีอัตราทดคงที่ และมีการหล่อลื่นด้วยน้ำมันภายใน</p>
-        <h3>ค่ามาตรฐาน</h3>
+        <h3>หน้าที่และหลักการทำงานทางวิศวกรรมของ ชุดเกียร์ทดรอบกำลัง (Gearbox / Reduction Gear Unit)</h3>
+<p>ในระบบขับเคลื่อนของรถไฟฟ้าและรถจักร ชุดเกียร์ทดรอบกำลัง (Gearbox) ถือเป็นหัวใจสำคัญใน "ระบบส่งกำลัง" (Transmission System) ทำหน้าที่เป็นตัวกลางในการแปลงและส่งถ่ายพลังงานกลจากมอเตอร์ลากจูง (Traction Motor) ไปยังชุดเพลาล้อ (Wheelset) เพื่อขับเคลื่อนขบวนรถให้เคลื่อนที่ไปข้างหน้าหรือถอยหลัง</p>
+<p>หน้าที่หลักและหลักการทำงานในเชิงวิศวกรรมของชุดเกียร์ทดรอบกำลัง สามารถแบ่งออกเป็น 5 ประการสำคัญ ดังนี้</p>
+        <p>1. การลดความเร็วรอบและเพิ่มแรงบิด (Speed Reduction & Torque Multiplication)</p>
         <ul>
-            <p>EN / DIN (ยุโรป)</p>
-            <li>DIN 17200 – 17240 — Alloy steels for gears</li>
-            <li>DIN 3990 — Strength calculation for cylindrical gears (วัสดุแนะนำ)</li>
-            <li>EN 10083 — Alloy steel for heat treatment</li>
-            <li>ใช้ผลิตเหล็กชุบแข็ง/เกียร์ไฟฟ้า, เกียร์เพลา</li>
-            <li>เกรดที่นิยม: 16MnCr5, 18CrNiMo7-6, 20MnCr5</li>
-            <p>✔ คุณสมบัติ</p>
-            <li>สามารถ carburize หรือ quench & temper</li>
- 			<li>Tensile strength: 800–1200 MPa (ขึ้นอยู่กับเกรด)</li>
- 			<li>Hardness หลังชุบแข็ง: HRC 55–62</li>
+            <li>อัตราทดเกียร์คงที่ (Fixed Gear Ratio): มอเตอร์ลากจูงของรถไฟฟ้ามักถูกออกแบบมาให้หมุนด้วยความเร็วรอบที่สูงมาก (High RPM) แต่มีแรงบิด (Torque) ไม่เพียงพอที่จะฉุดลากขบวนรถที่มีน้ำหนักมหาศาล ชุดเกียร์จะทำหน้าที่ "ลดความเร็วรอบ" ของมอเตอร์ลง และ "เพิ่มแรงบิด" ให้สูงขึ้นในสัดส่วนที่แปรผกผันกัน (ตามอัตราทดฟันเฟือง) เพื่อให้รถไฟมีพละกำลังมหาศาลในการออกตัวและปีนไต่ทางลาดชัน</li>
         </ul>
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <p>2. การถ่ายทอดกำลังขับเคลื่อนทางพลศาสตร์ (Dynamic Power Transmission)</p>
+<ul>
+    <li>การเชื่อมต่อแบบยืดหยุ่น (Flexible Coupling): เนื่องจากมอเตอร์ลากจูงมักติดตั้งอยู่บนโครงแคร่ล้อ (Bogie Frame) ซึ่งมีการให้ตัวได้จากระบบกันสะเทือน ในขณะที่ชุดเกียร์สวมอยู่กับเพลาล้อที่กระแทกกับรางโดยตรง ชุดเกียร์จึงต้องทำงานร่วมกับข้อต่อยืดหยุ่น (Flexible Coupling) เพื่อรับมือกับการขยับตัวที่ไม่พร้อมกันระหว่างมอเตอร์และเพลาล้อ โดยมั่นใจได้ว่ากำลังขับจะถูกส่งผ่านไปได้อย่างราบรื่นและไม่ทำให้ชิ้นส่วนเสียหาย</li>
+</ul>
+<p>3. การออกแบบลักษณะฟันเฟืองเพื่อประสิทธิภาพสูงสุด (Helical Gear Design)</p>
+<ul>
+    <li>เฟืองเฉียง (Helical Gears): ชุดเกียร์ของรถไฟฟ้ามักใช้ฟันเฟืองแบบเฉียงแทนเฟืองตรง (Spur Gears) เนื่องจากการขบกันของเฟืองเฉียงจะค่อยๆ สัมผัสกันอย่างต่อเนื่อง ทำให้สามารถรับโหลด (Load Capacity) ได้สูงกว่ามาก ช่วยลดการสั่นสะเทือน และที่สำคัญคือ "ลดเสียงรบกวน (Noise Reduction)" ขณะที่รถไฟวิ่งด้วยความเร็วสูงได้อย่างมีประสิทธิภาพ</li>
+</ul>
+<p>4. เสื้อเกียร์และระบบหล่อลื่น (Gear Housing & Lubrication System)</p>
+<ul><li>โครงสร้างเสื้อเกียร์ (Gear Casing): ทำจากเหล็กหล่อหรืออลูมิเนียมอัลลอยด์ที่แข็งแรงทนทาน ทำหน้าที่ปกป้องฟันเฟืองจากฝุ่น หิน และความชื้นภายนอก</li>
+<li>ระบบหล่อลื่นแบบวิดสาด (Splash Lubrication): ภายในชุดเกียร์จะบรรจุน้ำมันเกียร์ชนิดพิเศษ (Gear Oil) เมื่อเฟืองขับหมุน มันจะวิดสาดน้ำมันไปหล่อลื่นและระบายความร้อนให้กับฟันเฟืองและตลับลูกปืนภายในทั้งหมดอย่างทั่วถึง</li>
+<li>ระบบปิดผนึก (Sealing): มีการใช้ซีลกันน้ำมันและซีลกันฝุ่น (Labyrinth Seals) คุณภาพสูง เพื่อป้องกันไม่ให้น้ำมันรั่วซึมออก และป้องกันสิ่งสกปรกเข้าไปทำลายชิ้นส่วนภายใน</li>
+</ul>
+<p>5. การบริหารจัดการน้ำหนักใต้สปริง (Unsprung Mass Management)</p>
+<ul><p>ในทางวิศวกรรมล้อเลื่อน ชุดเกียร์ส่วนใหญ่จะถูกสวมเข้ากับเพลาล้อโดยตรง (Axle-hung) น้ำหนักบางส่วนของชุดเกียร์จึงถือเป็น "น้ำหนักใต้สปริง" (Unsprung Mass) วิศวกรจึงต้องออกแบบชุดเกียร์ให้มีขนาดกะทัดรัดและมีน้ำหนักเบาที่สุดเท่าที่จะเป็นไปได้ เพื่อลดแรงกระแทก (Dynamic Impact) ที่กระทำต่อพื้นผิวราง ซึ่งจะช่วยยืดอายุการใช้งานของโครงสร้างรางและล้อรถไฟในระยะยาว</p>
+   </ul>
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSejp8eqd8TlMGLVLicYyhvSKNFY5wOgFWHS_VCmxENxXXThNQ/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 

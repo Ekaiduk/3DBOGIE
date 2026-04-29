@@ -21,11 +21,11 @@
     <div class="container">
         <a href="index.html" class="nav-brand">
             <div class="nav-brand-icon">⚙️</div>
-            <h1>QR Anatomy 3D</h1>
+            <h1>Bogie 3D Explorer</h1>
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+            <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,8 +62,8 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Brake Caliper
     </div>
     <div class="page-header">
-        <h1>Brake Caliper/Actuator</h1>
-        <span class="part-badge">Part 13</span>
+        <h1>Brake Caliper/Actuator - ก้ามปูเบรกและตัวสั่งการ/กระบอกเบรก</h1>
+        <span class="part-badge">Part 12</span>
     </div>
     <div class="model-viewer" id="model1">
         <div class="loading-overlay" id="loadingOverlay">
@@ -73,13 +73,61 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Brake Caliper</h2>
+        <div class="header-row">
+    <h2>รายละเอียดของ Brake Caliper</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGyG5lURSIe4sNFKL5-g3dYUZqvBvDmepYUC6dXxuSt3KM_Q/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
         
-        <h3>หน้าที่ของ Brake Caliper</h3>
-        <p>Brake Caliper / Actuator (ชุดเบรก/กลไกเบรก) สร้างแรงกดเพื่อบีบ Brake Pad เข้ากับ Brake Disc รับแรงจากระบบลมหรือระบบไฮดรอลิกเพื่อกระตุ้นให้เบรกทำงาน</p>
-        <h3>ค่ามาตรฐาน</h3>
-        <p>เหล็กหล่อ หรือ อลูมิเนียมอัลลอยด์ (Aluminum Alloy) / ซีล: ยางสังเคราะห์ EN 1706 (Aluminium and aluminium alloys) - เช่น AC-44300 (สำหรับอลูมิเนียม); ISO 6624 (Hydraulic brake cylinders) – สำหรับข้อกำหนดด้านมิติ</p>
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <h3>หน้าที่และหลักการทำงานทางวิศวกรรมของ Brake Caliper & Actuator (ก้ามปูเบรกและกระบอกสั่งการเบรก)</h3>
+        <p>ในระบบวิศวกรรมล้อเลื่อน (Rolling Stock Engineering) Brake Caliper (ก้ามปูเบรก) และ Brake Actuator (กระบอกสั่งการเบรก) เปรียบเสมือน "กล้ามเนื้อ" ของระบบเบรกแบบเสียดทาน (Friction Braking System) ชิ้นส่วนทั้งสองนี้ทำงานประสานกันอย่างใกล้ชิดเพื่อแปลงคำสั่งจากห้องนักบินให้กลายเป็นพละกำลังทางกลที่สามารถหยุดยั้งขบวนรถไฟน้ำหนักมหาศาลได้</p>
+        <p>หน้าที่และหลักการทำงานเชิงวิศวกรรมของชุดก้ามปูและกระบอกเบรก มีรายละเอียดเชิงลึกดังนี้</p>
+        <p>1. การแปลงพลังงานและสร้างแรงทางกล (Energy Conversion & Actuation)</p>
+        <ul>
+            <li>หัวใจของการสั่งการ (Actuator): กระบอกสั่งการเบรก (Actuator หรือ Brake Cylinder) ทำหน้าที่รับแรงดันจาก ระบบลม (Pneumatic System) หรือ ระบบไฮดรอลิก (Hydraulic System) เมื่อพนักงานขับรถสั่งการเบรก แรงดันของไหลจะถูกส่งเข้ามาในกระบอกเพื่อดันลูกสูบ (Piston) ให้เคลื่อนที่ไปข้างหน้า</li>
+            <li>เปลี่ยนแรงดันเป็นแรงกด: กระบวนการนี้คือการแปลง พลังงานแรงดัน (Pressure Energy) ให้กลายเป็น แรงผลักทางกล (Mechanical Push Force) เพื่อส่งต่อรหัสคำสั่งนี้ไปยังชุดก้ามปูเบรก</li>
+        </ul>
+        <p>2. พลศาสตร์ของก้ามปูเบรกและการกระจายแรงหนีบ (Caliper Kinematics & Clamping Force)</p>
+        <ul>
+            <li>ระบบคานงัด (Leverage System): แรงผลักจากกระบอกเบรกจะถูกส่งผ่านกลไกจุดหมุนของ Brake Caliper ซึ่งออกแบบตามหลักวิศวกรรมคานงัด เพื่อ "ทวีคูณแรง" (Force Amplification) ให้สูงขึ้น</li>
+            <li>การหนีบที่สมดุล: ก้ามปูเบรกจะบีบก้อนผ้าเบรก (Brake Pad) เข้าประกบกับจานเบรก (Brake Disc) อย่างพร้อมเพรียงกันจากทั้งสองด้าน (คล้ายกรรไกรหรือก้ามปู) สร้างแรงหนีบ (Clamping Force) ที่สมดุลและสม่ำเสมอ เพื่อให้เกิดการเสียดสีที่หน้าสัมผัสอย่างเต็มประสิทธิภาพ โดยไม่ทำให้จานเบรกเกิดการบิดตัว</li>
+        </ul>
+        <p>3. กลไกปรับตั้งระยะผ้าเบรกอัตโนมัติ (Automatic Slack Adjuster)</p>
+        <ul>
+            <li>ปัญหาการสึกหรอ: เมื่อใช้งานไปเรื่อยๆ เนื้อผ้าเบรกย่อมสึกหรอและบางลง หากไม่มีการปรับตั้ง ระยะห่าง (Clearance) ระหว่างผ้าเบรกกับจานเบรกจะกว้างขึ้น ส่งผลให้ลูกสูบต้องเดินทางไกลขึ้น ทำให้เบรกตอบสนองช้าลง (Brake Lag) ซึ่งอันตรายมาก</li>
+            <li>ความอัจฉริยะทางกล: ภายในกระบอก Actuator หรือชุด Caliper ของรถไฟสมัยใหม่ จะมีกลไกกลไกฟันเฟืองซ่อนอยู่ เรียกว่า Automatic Slack Adjuster ทำหน้าที่ชดเชยระยะการสึกหรอของผ้าเบรกโดยอัตโนมัติ กลไกนี้จะช่วย "รักษาระยะห่าง" ให้อยู่ในค่ามาตรฐานเสมอ (มักจะห่างเพียง 1-2 มิลลิเมตร) ทำให้ไม่ว่าผ้าเบรกจะใหม่หรือใกล้หมด รถไฟก็จะมีระยะเวลาตอบสนองในการเบรกที่รวดเร็วและแม่นยำเท่าเดิมตลอดเวลา</li>
+        </ul>
+        <p>4. ระบบเบรกจอดแบบรวมศูนย์และกลไกความปลอดภัย (Integrated Parking Brake & Fail-safe Design)</p>
+        <ul>
+            <li>หลักการ Spring-Applied: ชุดก้ามปูเบรกในหลายๆ แคร่ล้อ (โดยเฉพาะรถไฟฟ้าขนส่งมวลชน) จะมีการควบรวม ระบบเบรกจอด (Parking Brake) เอาไว้ในตัว โดยใช้หลักการที่เรียกว่า Spring-Applied, Air-Released (SAAR)</li>
+            <li>กลไก Fail-safe: * ขณะวิ่งปกติ: ระบบจะจ่ายลมอัดเข้าไปเพื่อดันสปริงตัวใหญ่ไว้ไม่ให้ทำงาน
+                <ul>
+                    <li>ขณะจอดหรือเกิดเหตุลมรั่ว/ระบบลมล้มเหลว: เมื่อไม่มีแรงดันลม สปริงที่ถูกบีบอัดไว้จะคลายตัวออกและกระแทกผ้าเบรกให้หนีบจานเบรกอย่างรุนแรงโดยอัตโนมัติทันที เพื่อล็อกขบวนรถไม่ให้ไหล (Rollaway) ถือเป็นระบบความปลอดภัยขั้นสูงสุด</li>
+                </ul>
+            </li>
+        </ul>
+        <p>5. ความทนทานต่อสภาวะพลศาสตร์รุนแรง (Dynamic Environmental Endurance)</p>
+        <ul>
+            <li>เนื่องจากก้ามปูเบรกต้องติดตั้งอยู่บริเวณโครงแคร่ (Bogie Frame) ซึ่งจัดอยู่ในกลุ่ม "น้ำหนักใต้สปริง" (Unsprung Mass) หรือรองรับแรงสั่นสะเทือนโดยตรง โครงสร้างของ Caliper จึงต้องหล่อขึ้นรูปจากเหล็กกล้าผสม (Alloy Steel) หรืออลูมิเนียมอัลลอยด์เกรดพิเศษ ที่ทนทานต่อแรงสั่นสะเทือน (Vibration) ความร้อนแผ่รังสีจากจานเบรก (Radiant Heat) ฝุ่นผงเหล็ก และสภาพอากาศที่รุนแรงได้อย่างยอดเยี่ยม</li>
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSesKlrg4opJ89PTOqB-uMmGB-C85HQdfMsiz8lvjn0gjwgn5A/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 

@@ -21,11 +21,11 @@
     <div class="container">
         <a href="index.html" class="nav-brand">
             <div class="nav-brand-icon">⚙️</div>
-            <h1>QR Anatomy 3D</h1>
+            <h1>Bogie 3D Explorer</h1>
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+           <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,8 +62,8 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Traction Motor
     </div>
     <div class="page-header">
-        <h1>Traction Motor</h1>
-        <span class="part-badge">Part 07</span>
+        <h1>Traction Motor - มอเตอร์ขับเคลื่อนหรือมอเตอร์ลากจูง</h1>
+        <span class="part-badge">Part 06</span>
     </div>
     <div class="model-viewer" id="model1">
         <div class="loading-overlay" id="loadingOverlay">
@@ -73,19 +73,42 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Traction Motor</h2>
+        <div class="header-row">
+    <h2>รายละเอียดของ Traction Motor</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKlXd6euTbKifNykHn4dvPSsmdwatfL6EOWKGQYiHoqF1-Fg/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
         
-        <h3>หน้าที่ของ Traction Motor</h3>
-        <p>เป็นต้นกำลังในการขับเคลื่อนรถไฟฟ้า ให้เคลื่อนที่ด้วยความเร็วต่างๆ และทำหน้าที่เป็น Electric Brake (อิเล็กทริก เบรก) (เบรกทางไฟฟ้า)</p>
-        <h3>ค่ามาตรฐาน</h3>
-        <ul>
-            <p>Steel / Alloy Steel</p>
-            <li>EN 10083 — Alloy Steel for heat treatment (Rotor Shaft, Gear Shaft)</li>
-            <p>เกรด: 20Cr, 42CrMo4, 34CrNiMo6</p>
-            <li>SAE 4140 / 4340 / 8620 — Alloy steel สำหรับ shaft, rotor</li>
-            <li>GB/T 3077 / GB/T 11352 — Alloy steel / Cast steel สำหรับ housing</li>
-        </ul>
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <h3>หน้าที่และหลักการทำงานทางวิศวกรรมของมอเตอร์ขับเคลื่อน (Traction Motor)</h3>
+<p>ในระบบวิศวกรรมล้อเลื่อน (Rolling Stock Engineering) มอเตอร์ขับเคลื่อน (Traction Motor) หรือที่มักเรียกกันว่า "มอเตอร์ลากจูง" เปรียบเสมือน "กล้ามเนื้อหัวใจ" ของรถไฟฟ้า ทำหน้าที่เป็นต้นกำลังหลักในการแปลงพลังงานไฟฟ้าให้เป็นพลังงานกล เพื่อขับเคลื่อนขบวนรถที่มีน้ำหนักมหาศาล และในขณะเดียวกันก็ยังมีบทบาทสำคัญอย่างยิ่งในระบบเบรกอีกด้วย</p>
+<p>หน้าที่หลักและหลักการทำงานเชิงวิศวกรรมของ Traction Motor สามารถแบ่งออกเป็น 5 ประการสำคัญ ดังนี้</p>       
+<p>1. การแปลงพลังงานและควบคุมการขับเคลื่อน (Energy Conversion & Propulsion Control)</p>
+<ul>
+    <li>การสร้างแรงบิดมหาศาล (High Starting Torque): มอเตอร์ต้องใช้กระแสไฟฟ้าจำนวนมากเพื่อสร้างสนามแม่เหล็กไฟฟ้าและรันโรเตอร์ให้หมุน สร้าง "แรงบิด" (Torque) ที่สูงมากพอที่จะเอาชนะความเฉื่อยและฉุดลากขบวนรถไฟให้ออกตัวจากจุดหยุดนิ่งได้อย่างนุ่มนวล</li>
+    <li>การควบคุมความเร็วที่แม่นยำ (Precise Speed Control): ในรถไฟฟ้าสมัยใหม่ มอเตอร์จะทำงานร่วมกับระบบควบคุม VVVF Inverter (Variable Voltage Variable Frequency) ซึ่งทำหน้าที่ปรับแรงดันและความถี่ของกระแสไฟฟ้า ทำให้สามารถควบคุมความเร็วรอบของมอเตอร์และการไต่ระดับความเร็ว (Acceleration) ได้อย่างละเอียดและแม่นยำในทุกสภาวะการขับขี่</li>
+</ul>
+<p>2. ระบบเบรกทางไฟฟ้า (Electric Braking System)</p>
+<p>นี่คือหนึ่งในความสามารถที่สำคัญที่สุดของมอเตอร์ขับเคลื่อน เมื่อพนักงานขับรถสั่งการลดความเร็วหรือเบรก มอเตอร์จะเปลี่ยนบทบาทจาก "มอเตอร์" กลายเป็น "เครื่องกำเนิดไฟฟ้า (Generator)" ทันที ซึ่งก่อให้เกิดประโยชน์ 2 ส่วน คือ</p>
+<ul>
+    <li>การหน่วงความเร็ว (Dynamic Braking): พลังงานจลน์จากการวิ่งของรถไฟจะไปหมุนแกนโรเตอร์ ทำให้เกิดความต้านทานทางแม่เหล็กไฟฟ้า (Electromagnetic Drag) ซึ่งจะไปหน่วงการหมุนของเพลาล้อ ทำให้รถไฟชะลอความเร็วลงโดยไม่ต้องพึ่งพาผ้าเบรก (Friction Brake) เพียงอย่างเดียว ช่วยลดการสึกหรอของผ้าเบรกได้อย่างมหาศาล</li>
+    <li>การดึงพลังงานกลับคืน (Regenerative Braking): กระแสไฟฟ้าที่ถูกผลิตขึ้นจากโหมด Generator จะถูกส่งกลับคืนเข้าสู่สายส่งไฟฟ้าเหนือหัว (Catenary) หรือรางที่สาม (Third Rail) เพื่อให้รถไฟขบวนอื่นที่อยู่ใกล้เคียงดึงไปใช้ หรือส่งกลับสู่สถานีจ่ายไฟ ถือเป็นเทคโนโลยีที่ช่วยประหยัดพลังงานได้อย่างยอดเยี่ยม</li>
+</ul>
+<p>3. การติดตั้งและการจัดการน้ำหนักทางพลศาสตร์ (Mounting & Unsprung Mass Management)</p>
+<ul>
+    <li>•	ลดภาระใต้สปริง (Suspension Integration): น้ำหนักของมอเตอร์มีผลโดยตรงต่อแรงกระแทกที่ทำกับราง วิศวกรจึงมักออกแบบให้มอเตอร์แขวนยึดติดกับโครงแคร่ล้อ (Bogie Frame) เป็นหลัก (Fully Suspended) แทนที่จะวางทับบนเพลาล้อโดยตรง วิธีนี้ช่วยเปลี่ยนน้ำหนักมอเตอร์ให้อยู่ในกลุ่ม "น้ำหนักเหนือสปริง (Sprung Mass)" ช่วยลดแรงกระแทกทางพลศาสตร์ที่กระทำต่อโครงสร้างราง และทำให้การเดินทางนุ่มนวลขึ้น</li>
+</ul>
+<p>4. ระบบระบายความร้อนที่สมบุกสมบัน (Thermal Management & Cooling)</p>
+<ul>
+    <li>เนื่องจากมอเตอร์ต้องทำงานหนักอย่างต่อเนื่องทั้งในการเร่งและเบรก ทำให้เกิดความร้อนสะสมสูงมาก มอเตอร์ขับเคลื่อนจึงต้องมีระบบระบายความร้อนที่มีประสิทธิภาพ เช่น พัดลมระบายความร้อนในตัว (Self-ventilated) หรือ ระบบพัดลมเป่าอัดแยกส่วน (Forced-ventilated) * นอกจากนี้ โครงสร้างหรือเสื้อมอเตอร์ (Motor Housing) ต้องถูกปิดผนึกอย่างแน่นหนาตามมาตรฐาน IP (Ingress Protection) ระดับสูง เพื่อป้องกันฝุ่นเหล็กจากราง น้ำขัง และความชื้น ไม่ให้เข้าไปทำลายขดลวดทองแดงและแบริ่งภายใน</li>
+</ul>
+<p>5. เทคโนโลยีมอเตอร์ลากจูงสมัยใหม่ (Modern Motor Technologies)</p>
+<ul>
+    <li>จาก DC สู่ AC: ในอดีตรถไฟมักใช้มอเตอร์กระแสตรง (DC Motor) ซึ่งมีแปรงถ่านที่ต้องบำรุงรักษาบ่อย ปัจจุบันได้เปลี่ยนมาใช้ มอเตอร์เหนี่ยวนำกระแสสลับ 3 เฟส (3-Phase AC Induction Motor) ซึ่งทนทานกว่าและแทบไม่ต้องบำรุงรักษา (Maintenance-free)</li>
+    <li>ก้าวสู่ยุค PMSM: รถไฟฟ้าความเร็วสูงและรถไฟฟ้าขนส่งมวลชนรุ่นใหม่ล่าสุด เริ่มหันมาใช้เทคโนโลยี PMSM (Permanent Magnet Synchronous Motor) หรือมอเตอร์ซิงโครนัสชนิดแม่เหล็กถาวร ซึ่งมีขนาดเล็กกว่า น้ำหนักเบากว่า มีประสิทธิภาพในการแปลงพลังงานสูงกว่า และมีเสียงรบกวนต่ำกว่ามอเตอร์แบบเดิมอย่างมาก</li>
+</ul>
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUb3MJbt997lexcv1S_ugpuZlFpkoYBM4wQfnbrjgw7PIMXQ/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 

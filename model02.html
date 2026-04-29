@@ -25,7 +25,7 @@
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+           <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,7 +62,7 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Axle Box
     </div>
     <div class="page-header">
-        <h1>Axle Box</h1>
+        <h1>Axle Box - กล่องเพลาล้อ</h1>
         <span class="part-badge">Part 04</span>
     </div>
     <div class="model-viewer" id="model1">
@@ -73,32 +73,49 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Axle Box</h2>
+        <div class="header-row">
+    <h2>รายละเอียดของ Axle Box - กล่องเพลาล้อ</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyfBLm7s93zNyEK2AgfMLCbAtgKLf_jikBFugd-bgUWpgmkQ/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
         
-        <h3>หน้าที่ของ Axle Box</h3>
+        <h3>หน้าที่ของ Axle Box - กล่องเพลาล้อ</h3>
 
-            <p>&emsp;เป็นส่วนที่ครอบชุดแบริ่งล้อ (Axle Bearing) ที่ติดตั้งบริเวณหัวเพลาของชุดล้อรถไฟฟ้า ทำหน้าที่เป็นแท่นรองรับสปริงในส่วนของระบบรองรับการสั่นสะเทือนขั้นแรก พร้อมชุดครอบฝาปิดทึบกันฝุ่นหรือสิ่งสกปรกที่ส่งผลเสียต่อชุดแบริ่งล้อรถไฟฟ้า</p>
-        <h3>ค่ามาตรฐาน</h3>
-        <p>ใช้ในรถโดยสาร, รถไฟความเร็วสูง, รถไฟฟ้า (EMU)</p>
-       
-            
-            <p>✔ UIC 815 / UIC 615-4 — มาตรฐานวัสดุสำหรับเหล็กหล่อชิ้นส่วนใน bogie รวมถึง axlebox</p>
-            <p>✔ EN 1563 — Nodular Cast Iron (Ductile Iron)</p>
-            
-        
-       
-        <p>เกรดที่ใช้บ่อยใน Axlebox</p>
-        <ul>
-            <li>EN-GJS-400-18</li>
-            <li>EN-GJS-500-7</li>
-            <li>EN-GJS-600-3</li>
-            </ul>
-            <p>✔ EN 10293 — Steel Castings</p>
-
-            <ul>
-            <li>หากใช้เหล็กหล่อชนิด Steel Casting : GS-20Mn5 , GS-25CrMo4 (สำหรับงานรับแรงสูง)</li>
-        </ul>
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <p>หน้าที่และหลักการทำงานทางวิศวกรรมของกล่องเพลาล้อ (Axlebox)
+ในวิศวกรรมระบบล้อเลื่อน (Rolling Stock Engineering) กล่องเพลาล้อ (Axlebox) ไม่ได้เป็นเพียงฝาครอบกันฝุ่นธรรมดา แต่เป็น "จุดเชื่อมต่อทางกลที่สำคัญที่สุด (Critical Mechanical Interface)" ระหว่างชิ้นส่วนที่มีการหมุน (ชุดเพลาล้อ - Wheelset) กับชิ้นส่วนที่ไม่มีการหมุน (โครงแคร่ - Bogie Frame)
+กล่องเพลาล้อต้องรับภาระหนักทางพลศาสตร์ตลอดเวลาที่รถไฟเคลื่อนที่ หน้าที่และหลักการทำงานเชิงวิศวกรรมสามารถแบ่งรายละเอียดได้ดังนี้:
+</p>
+<p>1. การถ่ายเทและกระจายแรงทางพลศาสตร์ (Dynamic Load Transfer)</p>
+<p>กล่องเพลาล้อเป็นจุดศูนย์รวมของการถ่ายเทแรงทั้ง 3 แกน (3-Axis Forces) ระหว่างแคร่ล้อและราง</p>
+<ul>
+    <li>แนวดิ่ง (Vertical Load): ทำหน้าที่รับน้ำหนักของตัวรถไฟทั้งหมดที่กดทับลงมาจากโครงแคร่ล้อ (Bogie Frame) เพื่อถ่ายเทน้ำหนักลงสู่ปลายเพลาล้อ (Axle Journal)</li>
+    <li>แนวแกนยาว (Longitudinal Force): เมื่อรถไฟทำการเร่งความเร็ว (Traction) หรือเบรก (Braking) แรงเฉื่อยและแรงดึงมหาศาลจะถูกถ่ายทอดจากชุดล้อ ผ่านกล่องเพลาล้อ ไปยังโครงแคร่</li>
+    <li>แนวขวาง (Lateral Force): เมื่อรถไฟเข้าโค้ง จะเกิดแรงเหวี่ยงหนีศูนย์กลางและแรงกดที่หน้าแปลนล้อ (Flange Force) กล่องเพลาล้อจะช่วยถ่ายเทแรงต้านทานด้านข้างนี้เพื่อรักษาเสถียรภาพของชุดล้อ</li>
+</ul>       
+<p>2. การนำเลื่อนและควบคุมการจัดตำแหน่งล้อ (Wheelset Guidance & Kinematics)</p>
+<ul><li>กล่องเพลาล้อจะถูกยึดติดกับโครงแคร่ด้วยกลไกนำเลื่อน (Axlebox Guidance Mechanism) เช่น แขนนำเลื่อน (Trailing Arm) หรือระบบไกด์แบบต่างๆ</li>
+<li>กลไกนี้ทำหน้าที่ "รักษาระยะฐานล้อ (Wheelbase)" ให้คงที่อย่างแม่นยำ และอนุญาตให้ชุดล้อขยับขึ้น-ลงแนวดิ่งได้เมื่อเจอพื้นผิวรางที่ไม่สม่ำเสมอ โดยป้องกันไม่ให้ล้อบิดเบี้ยวออกจากศูนย์กลาง ซึ่งมีความสำคัญอย่างยิ่งต่อความปลอดภัยในการป้องกันการตกราง (Derailment Prevention)</li>
+</ul>
+<p>3. การปกป้องชุดแบริ่งและระบบหล่อลื่น (Bearing Housing & Tribology Control)</p>
+<ul>
+<li>พื้นที่ควบคุมสภาพแวดล้อม: ภายในกล่องเพลาล้อจะเป็นที่อยู่ของ ตลับลูกปืนเม็ดโค้ง (Journal Roller Bearing) ซึ่งเป็นหัวใจสำคัญของการหมุนของรถไฟ ฝาครอบที่ปิดทึบจะใช้ระบบซีลกันฝุ่นแบบพิเศษ (Labyrinth Seals)</li>
+<li>ป้องกันการปนเปื้อน: ช่วยปกป้องชุดแบริ่งจากสภาวะแวดล้อมที่รุนแรง เช่น น้ำฝน หินโรยทาง ฝุ่นผงเหล็กจากการเบรก และความชื้น ซึ่งสิ่งเหล่านี้สามารถทำให้สารหล่อลื่น (Grease) เสื่อมสภาพและทำให้ตลับลูกปืนแตกหักได้</li>
+</ul>    
+<p>4. ฐานรองรับระบบกันสะเทือนปฐมภูมิ (Primary Suspension Interface)</p>
+<ul>
+    <li>ด้านบนหรือด้านข้างของกล่องเพลาล้อ จะถูกออกแบบให้เป็น แท่นรองรับ (Spring Seat) สำหรับติดตั้งระบบช่วงล่างขั้นแรก (Primary Suspension) ซึ่งอาจเป็นสปริงขด (Coil Spring) หรือสปริงยาง (Rubber Spring)</li>
+    <li>ระบบนี้จะทำหน้าที่ดูดซับแรงกระแทกความถี่สูงจากผิวสัมผัสระหว่างล้อกับรางโดยตรง ก่อนที่แรงกระแทกนั้นจะทะลุขึ้นไปยังโครงแคร่และตัวรถไฟ</li>
+</ul>
+<p>5. การบูรณาการเซนเซอร์และระบบความปลอดภัย (Sensor Integration & Safety Systems)</p>
+<p>ในรถไฟฟ้าและรถไฟความเร็วสูงสมัยใหม่ กล่องเพลาล้อจะถูกใช้เป็นจุดติดตั้งอุปกรณ์ความปลอดภัยที่สำคัญ ได้แก่</p>
+<ul>
+    <li>เซนเซอร์วัดความเร็ว (Speed Sensor): เพื่อส่งข้อมูลไปยังระบบป้องกันล้อล็อกขณะเบรก (WSP - Wheel Slide Protection)</li>
+    <li>เซนเซอร์วัดอุณหภูมิ (Temperature Sensor): ระบบ Hot Box Detector เพื่อตรวจจับความร้อนสะสม หากตลับลูกปืนทำงานผิดปกติ ระบบจะแจ้งเตือนให้หยุดรถก่อนที่เพลาจะละลายหรือขาด</li>
+<li>อุปกรณ์สายดิน (Earth Return Current Unit): มีการติดตั้งแปรงถ่าน (Carbon Brush) ไว้ที่ฝาครอบกล่องเพลาล้อ เพื่อเป็นเส้นทางให้กระแสไฟฟ้าไหลกลับ (Return Current) จากมอเตอร์ลงสู่รางอย่างปลอดภัย โดยไม่ให้กระแสไฟไหลผ่านและสปาร์คทำลายลูกปืน (Electrical Pitting)</li>
+</ul>
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOJklpq_TZ8wJ_KDx4RzC0UGS9wAnDfYx8yQYQPCMAb10O3w/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 

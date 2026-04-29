@@ -21,11 +21,11 @@
     <div class="container">
         <a href="index.html" class="nav-brand">
             <div class="nav-brand-icon">⚙️</div>
-            <h1>QR Anatomy 3D</h1>
+            <h1>Bogie 3D Explorer</h1>
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+            <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,8 +62,8 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Brake Disc
     </div>
     <div class="page-header">
-        <h1>Brake Disc</h1>
-        <span class="part-badge">Part 12</span>
+        <h1>Brake Disc - จานเบรก</h1>
+        <span class="part-badge">Part 11</span>
     </div>
     <div class="model-viewer" id="model1">
         <div class="loading-overlay" id="loadingOverlay">
@@ -73,20 +73,57 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Brake Disc</h2>
+        <div class="header-row">
+    <h2>รายละเอียดของ Brake Disc</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeU_Y6SeL4N326VIjSKQ0A_7-K6mRb_oeQh0ZgKoNJ52ioJYg/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
         
-        <h3>หน้าที่ของ Brake Disc</h3>
+        <h3>หน้าที่และหลักการทำงานทางวิศวกรรมของ Brake Disc (จานเบรก)</h3>
+        <p>ในระบบวิศวกรรมล้อเลื่อน (Rolling Stock Engineering) Brake Disc (จานเบรก) ถือเป็นชิ้นส่วนหัวใจสำคัญของ "ระบบเบรกแบบเสียดทาน" (Friction Braking System) ซึ่งทำงานร่วมกับระบบลมเบรก (Pneumatic Brake) หน้าที่หลักของจานเบรกไม่ใช่เพียงแค่การหยุดรถ แต่คือการบริหารจัดการกับ "พลังงานจลน์มหาศาล" ของขบวนรถไฟที่กำลังพุ่งทะยานไปข้างหน้า</p>
+        <p>หน้าที่และหลักการทำงานเชิงวิศวกรรมของ Brake Disc สามารถแบ่งรายละเอียดได้ดังนี้</p>
+        <p>1. การแปลงพลังงานและสร้างแรงเสียดทาน (Energy Conversion & Friction Generation)</p>
         <ul>
-            <li>ติดตั้งอยู่บนเพลาล้อหรือดุมล้อ ทำหน้าที่เป็นผิวหน้าสัมผัสกับผ้าเบรก</li>
-            <li>รับแรงเสียดทานจากผ้าเบรกเพื่อชะลอและหยุดการหมุนของล้อรถไฟ</li>
-            <li>ช่วยให้การเบรกมีประสิทธิภาพ ควบคุมความเร็วของรถไฟได้และลดระยะเบรก</li>
+            <li>หลักการทางฟิสิกส์: เมื่อพนักงานขับรถสั่งการเบรก ก้ามปูเบรก (Brake Caliper) จะหนีบก้อนผ้าเบรก (Brake Pad) เข้ามากระแทกและเสียดสีกับจานเบรก จานเบรกจะทำหน้าที่เป็น "ผิวหน้าสัมผัส" (Friction Surface) เพื่อสร้างแรงต้านทานการหมุน</li>
+            <li>การแปลงรูปพลังงาน: กระบวนการนี้คือการเปลี่ยน พลังงานจลน์ (Kinetic Energy) ของรถไฟที่กำลังวิ่ง ให้กลายเป็น พลังงานความร้อน (Thermal Energy) ผ่านการเสียดสี ซึ่งความร้อนนี้จะถูกปล่อยออกสู่อากาศ ทำให้ความเร็วของเพลาล้อและตัวรถไฟลดลงจนหยุดนิ่งในที่สุด</li>
         </ul>
-        <h3>ค่ามาตรฐาน</h3>
+        <p>2. ตำแหน่งการติดตั้งทางพลศาสตร์ (Mounting Positions & Dynamics)</p>
+        <p>การติดตั้งจานเบรกในรถไฟและรถไฟฟ้ามักมี 2 รูปแบบหลัก ขึ้นอยู่กับพื้นที่และพฤติกรรมการทำความเร็ว</p>
         <ul>
-            <li>ผลิตจากเหล็กหล่อหรือเหล็กกล้าคุณภาพสูง ทนความร้อนและการสึกหรอ</li>
-            <li>ใช้มาตรฐานวัสดุกลุ่ม EN 10083 / EN 1563 หรือเทียบเท่า ตามข้อกำหนดของผู้ผลิตและหน่วยงานรถไฟ</li>
+            <li>ติดตั้งบนเพลาล้อ (Axle-mounted Brake Disc): จานเบรกจะถูกสวมอัดเข้ากับแกนเพลาล้อโดยตรง (มักมี 2-3 จานต่อหนึ่งเพลา) นิยมใช้ในรถตู้โดยสารและรถไฟฟ้าความเร็วสูง เนื่องจากมีพื้นที่ระบายความร้อนได้ดีและรับแรงบิดได้สูง</li>
+            <li>ติดตั้งบนแผ่นจานล้อ (Wheel-mounted Brake Disc / Cheek Disc): จานเบรกจะถูกยึดติดกับด้านข้างของตัวล้อรถไฟโดยตรง มักใช้ในแคร่ล้อแบบมีมอเตอร์ (Motor Bogie) ซึ่งพื้นที่บนเพลาล้อถูกชุดเกียร์และมอเตอร์แย่งชิงไปหมดแล้ว</li>
         </ul>
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <p>3. การจัดการอุณหภูมิและการระบายความร้อน (Thermal Management & Heat Dissipation)</p>
+        <ul>
+            <li>ความร้อนระดับวิกฤต: ในขณะที่รถไฟความเร็วสูงทำการเบรกฉุกเฉิน อุณหภูมิที่ผิวจานเบรกอาจพุ่งสูงถึง 400 - 700 องศาเซลเซียส ภายในเวลาไม่กี่วินาที</li>
+            <li>การออกแบบเพื่อระบายอากาศ: จานเบรกทางวิศวกรรมจึงมักถูกออกแบบให้เป็น จานแบบมีครีบระบายอากาศ (Ventilated Brake Discs) โดยมีช่องว่างตรงกลางระหว่างแผ่นจานสองด้าน เพื่อให้ลมไหลผ่านและดึงเอาความร้อนสะสมออกไปสู่อากาศภายนอก (Convective Cooling) ป้องกันไม่ให้ผ้าเบรกไหม้หรือจานเบรกแตกร้าวจากความเครียดทางความร้อน (Thermal Stress)</li>
+        </ul>
+        <p>4. การควบคุมระยะเบรกและประสิทธิภาพ (Braking Efficiency & Stopping Distance)</p>
+        <ul>
+            <li>จานเบรกที่ถูกออกแบบอย่างแม่นยำ จะช่วยให้แรงหน่วง (Retardation Force) มีความคงที่และเสถียร ส่งผลให้วิศวกรสามารถคำนวณและ ควบคุมระยะเบรก (Stopping Distance) ได้อย่างแม่นยำตามมาตรฐานความปลอดภัย</li>
+            <li>นอกจากนี้ ยังทำงานสอดประสานกับ ระบบป้องกันล้อไถล (WSP - Wheel Slide Protection) โดยจานเบรกจะตอบสนองต่อการจับและปล่อยของก้ามปูเบรกในระดับเสี้ยววินาที เพื่อป้องกันไม่ให้ล้อล็อกตายจนลื่นไถลไปกับราง</li>
+        </ul>
+        <p>5. วิศวกรรมวัสดุศาสตร์ (Materials Engineering)</p>
+        <ul>
+            <li>เหล็กหล่อผสม (Alloy Cast Iron): เป็นวัสดุมาตรฐานที่นิยมใช้มากที่สุด เนื่องจากมีคุณสมบัติทนทานต่อความร้อนได้ดีเยี่ยม และมีราคาเหมาะสม</li>
+            <li>เหล็กกล้าหล่อขึ้นรูป (Forged Steel) หรือ วัสดุผสม (Composite Materials): ในรถไฟฟ้าความเร็วสูง (High-Speed Trains) บางรุ่น เริ่มมีการใช้วัสดุขั้นสูง เช่น คาร์บอนเซรามิก (Carbon-Ceramic) หรือวัสดุผสมทางวิศวกรรม เพื่อให้ได้จานเบรกที่มีน้ำหนักเบาลง (ลด Unsprung Mass) แต่สามารถทนความร้อนได้สูงกว่าเดิมหลายเท่า ช่วยยืดอายุการใช้งานและเพิ่มความปลอดภัยสูงสุด</li>
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5QfKcDKbEfLTSWm29vueA9R1zvaKmZbafdIaX2Be8IwXMWg/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 

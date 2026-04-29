@@ -21,11 +21,11 @@
     <div class="container">
         <a href="index.html" class="nav-brand">
             <div class="nav-brand-icon">⚙️</div>
-            <h1>QR Anatomy 3D</h1>
+            <h1>Bogie 3D Explorer</h1>
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+            <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,8 +62,8 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Side Bearer / Side Bearer Pad
     </div>
     <div class="page-header">
-        <h1>Side Bearer / Side Bearer Pad</h1>
-        <span class="part-badge">Part 15</span>
+        <h1>Side Bearer / Side Bearer Pad - แผ่นหรือจุดรองรับน้ำหนักด้านข้าง</h1>
+        <span class="part-badge">Part 16</span>
     </div>
     <div class="model-viewer" id="model1">
         <div class="loading-overlay" id="loadingOverlay">
@@ -73,20 +73,47 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Side Bearer / Side Bearer Pad</h2>
+        <div class="header-row">
+    <h2>รายละเอียดของ Side Bearer / Side Bearer Pad</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8llb_LLLdg5DSXlTScwxLiOlL1cYcQCZ7rEk69WKvev59cg/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
         
-        <h3>หน้าที่ของ Side Bearer / Side Bearer Pad</h3>
-        <ol>
-            <li>เป็นจุดรองรับน้ำหนักและแรงโคลงระหว่างตู้รถไฟกับโบกี้ ร่วมกับโบลสเตอร์</li>
-            <li>จำกัดการเอียงและการเคลื่อนที่ด้านข้างของตัวรถ (Car Body) เมื่อเข้าโค้งหรือเกิดแรงลม</li>
-            <li>ช่วยควบคุมการถ่ายเทแรงด้านข้าง ทำให้การวิ่งบนรางมีความเสถียรและลดการสึกหรอของชิ้นส่วนรองรับอื่น ๆ</li>
-        </ol>
-        <h3>ค่ามาตรฐาน</h3>
-        <ol>
-            <li>มักใช้วัสดุผสม เช่น แผ่นเหล็ก + แผ่นยาง หรือโพลียูรีเทน ที่ทนแรงกดและการเสียดสี</li>
-            <li>วัสดุเหล็กอ้างอิงตามมาตรฐาน EN 10025 / EN 10083 และวัสดุยางตามมาตรฐานอุตสาหกรรมยางวิศวกรรม</li>
-            </ol>
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <h3>หน้าที่และหลักการทำงานทางวิศวกรรมของ Side Bearer (แผ่นรองรับน้ำหนักด้านข้าง)</h3>
+        <p>ในระบบวิศวกรรมล้อเลื่อน (Rolling Stock Engineering) หาก Centre Plate (จานหมุนหลัก) คือกระดูกสันหลังที่คอยรับน้ำหนักอยู่กึ่งกลาง Side Bearer (แผ่นรองรับน้ำหนักด้านข้าง) ก็เปรียบเสมือน "แขนประคองสมดุล" ที่ติดตั้งอยู่บริเวณด้านซ้ายและขวาของ Bolster (คานขวางหลัก) หรือบนโครงแคร่ล้อ ทำหน้าที่สำคัญในการจัดการกับโมเมนต์การพลิกคว่ำและรักษาระนาบของขบวนรถไฟให้ขนานกับพื้นโลกอยู่เสมอ</p>
+        <p>หน้าที่และหลักการทำงานเชิงวิศวกรรมของ Side Bearer มีรายละเอียดเชิงลึกดังนี้</p>
+        <p>1.การจำกัดการโคลงและแบ่งเบาภาระน้ำหนัก (Roll Control & Load Sharing)</p>
+    <ul>
+        <li>การทำงานร่วมกับ Centre Plate: ในสภาวะปกติ น้ำหนักส่วนใหญ่ของตู้รถไฟจะตกลงที่จุดศูนย์กลาง (Centre Plate) แต่เมื่อรถไฟวิ่งผ่านรางที่ไม่เรียบหรือมีการสวิงตัว น้ำหนักจะถูกถ่ายเทมาที่ด้านข้าง Side Bearer จะทำหน้าที่เป็น "จุดรองรับสำรอง" เพื่อรับแรงกดทับนี้ ป้องกันไม่ให้ตู้รถไฟเอียงกระเท่เร่ (Roll) มากเกินไปจนสูญเสียศูนย์ถ่วง (Center of Gravity)</li>
+    </ul>
+<p>2.พลศาสตร์การต้านทานแรงเหวี่ยงและลมปะทะ (Centrifugal & Crosswind Resistance)</p>
+<ul>
+    <li>ความท้าทายทางธรรมชาติ: เมื่อขบวนรถไฟวิ่งเข้าโค้งด้วยความเร็วสูง (เกิดแรงเหวี่ยงหนีศูนย์กลาง) หรือวิ่งผ่านพื้นที่เปิดโล่งที่มีพายุลมพัดขวาง (Crosswind) ตู้รถไฟซึ่งมีพื้นที่ปะทะลมขนาดใหญ่จะเกิดอาการ "อยากจะล้ม"</li>
+    <li>การพยุงโครงสร้าง: Side Bearer ฝั่งที่ถูกน้ำหนักกดทับลงมา จะทำหน้าที่ต้านทานโมเมนต์การพลิกคว่ำนั้น (Overturning Moment) ช่วยจำกัดระยะการเอียงของตู้โดยสารให้อยู่ในขอบเขตที่ปลอดภัย (Kinematic Envelope) ป้องกันอุบัติเหตุการล้มคว่ำได้อย่างมีประสิทธิภาพ</li>
+</ul>
+<p>3.การหน่วงความสั่นสะเทือนและการแกว่งส่าย (Friction Damping & Yaw Resistance)</p>
+<ul>
+    <li>นอกจากการประคองขึ้น-ลงแล้ว ผิวสัมผัสระหว่าง Side Bearer กับใต้ตู้รถไฟยังสร้าง "แรงเสียดทานทางกล" (Frictional Resistance) ในขณะที่แคร่ล้อพยายามจะหมุนเลี้ยว</li>
+    <li>แรงเสียดทานนี้มีประโยชน์อย่างมหาศาลในการช่วยหน่วงการส่ายไปมาของแคร่ล้อ (Hunting Oscillation) เมื่อรถไฟวิ่งด้วยความเร็วสูง ทำให้การวิ่งทางตรงมีความเสถียร (High-speed Stability) และลดการสะบัดซ้าย-ขวาได้อย่างยอดเยี่ยม</li>
+</ul>
+<p>4.วิศวกรรมวัสดุและการดูดซับแรงกระแทก (Material Engineering & Elasticity)</p>
+<p>Side Bearer ในรถไฟสมัยใหม่มักถูกออกแบบให้เป็นแบบ "สัมผัสถาวร" (Constant Contact Side Bearers - CCSB) ซึ่งภายในจะมีการติดตั้งวัสดุที่มีความยืดหยุ่น เช่น</p>
+<ul>
+    <li>สปริงยาง (Rubber Springs) หรือ โพลียูรีเทน (Polyurethane): เพื่อช่วยดูดซับแรงกระแทก (Shock Absorption) ก่อนที่จะส่งผ่านความกระด้างทะลุขึ้นไปยังห้องโดยสาร</li>
+    <li>แผ่นรองลื่นและทนการเสียดสี (Friction Liners/Wear Plates): บริเวณผิวบนสุดมักใช้วัสดุโพลิเมอร์วิศวกรรม หรือเหล็กกล้าผสมที่ทนทานต่อการเสียดสี เพื่อให้ตัวรถยังสามารถขยับตัวเลี้ยวโค้งได้โดยไม่เกิดเสียงดังรบกวน</li>
+</ul>
+<p>5.การลดการสึกหรอของชิ้นส่วนหลัก (Wear Reduction on Core Components)</p>
+<ul>
+    <li>หากไม่มี Side Bearer หรือตั้งระยะห่างไม่ถูกต้อง ภาระน้ำหนักและแรงบิดทั้งหมดจะไปตกอยู่ที่ Centre Plate และ Centre Pivot (สลักจุดหมุนกลาง) เพียงจุดเดียว ซึ่งจะทำให้ชิ้นส่วนเหล่านั้นเกิดการแตกร้าวจากความเครียดสะสม (Fatigue Stress) อย่างรวดเร็ว</li>
+    <li>การมี Side Bearer จึงเป็นการกระจายแรงทางกล (Force Distribution) ที่ช่วยยืดอายุการใช้งานของโครงสร้างแคร่ล้อโดยรวม ช่วยลดค่าใช้จ่ายและระยะเวลาในการซ่อมบำรุงระบบช่วงล่างลงได้อย่างมีนัยสำคัญ</li>
+</ul>
+
+
+
+
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQ2EL-eyETz-toBwqs-Pvu5oJJC7cdSRROl6rL3SfZmSDxxw/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 

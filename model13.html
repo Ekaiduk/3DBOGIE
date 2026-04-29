@@ -21,11 +21,11 @@
     <div class="container">
         <a href="index.html" class="nav-brand">
             <div class="nav-brand-icon">⚙️</div>
-            <h1>QR Anatomy 3D</h1>
+            <h1>Bogie 3D Explorer</h1>
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+            <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,8 +62,8 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Yaw Damper
     </div>
     <div class="page-header">
-        <h1>Yaw Damper</h1>
-        <span class="part-badge">Part 16</span>
+        <h1>Yaw Damper - โช้คอัพป้องกันการส่ายไปมาของขบวนรถ</h1>
+        <span class="part-badge">Part 13</span>
     </div>
     <div class="model-viewer" id="model1">
         <div class="loading-overlay" id="loadingOverlay">
@@ -73,20 +73,44 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Yaw Damper</h2>
+        <div class="header-row">
+    <h2>รายละเอียดของ Yaw Damper</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYkSFDpxxB7ilufgsbhyVau0C9I9Fvs3SWvEVFYTJSKPOBsg/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
         
-        <h3>หน้าที่ของ Yaw Damper</h3>
+        <h3>หน้าที่และหลักการทำงานทางวิศวกรรมของ Yaw Damper (โช้คอัพป้องกันการส่าย)</h3>
+        <p>ในวิศวกรรมยานยนต์ราง (Rolling Stock Engineering) เมื่อขบวนรถไฟถูกพัฒนาให้วิ่งด้วยความเร็วที่สูงขึ้น ความท้าทายที่ยิ่งใหญ่ที่สุดมักไม่ใช่การจัดการกับความขรุขระในแนวดิ่ง แต่คือ "เสถียรภาพทางพลศาสตร์ในแนวราบ" (Lateral and Yaw Stability) Yaw Damper (โช้คอัพป้องกันการส่าย) จึงถูกคิดค้นขึ้นมาเพื่อทำหน้าที่เป็น "ผู้กำราบการแกว่ง" โดยจะถูกติดตั้งในแนวนอน ขนานไปกับทิศทางการวิ่ง เชื่อมต่อระหว่าง โครงแคร่ล้อ (Bogie Frame) กับ ตัวตู้รถไฟ (Car Body) หน้าที่และหลักการทำงานเชิงวิศวกรรมที่สำคัญมีดังนี้</p>
+        <p>1. การปราบปรามปรากฏการณ์ Hunting Oscillation (Sinusoidal Motion Suppression)</p>
         <ul>
-            <li>เชื่อมระหว่างโบกี้กับตู้รถไฟ ทำหน้าที่ต้านการส่าย (Yaw) ในแนวราบของโบกี้</li>
-            <li>ลดการแกว่งซ้าย–ขวา (Hunting Oscillation) ที่เกิดเมื่อรถไฟวิ่งด้วยความเร็วสูง</li>
-            <li>เพิ่มเสถียรภาพการวิ่ง ทำให้ผู้โดยสารรู้สึกนุ่มนวลและลดการสึกหรอของล้อและราง</li>
+            <li>ภัยเงียบของความเร็วสูง: ตามหลักการพลศาสตร์ ชุดล้อรถไฟที่เป็นทรงกรวย (Conical Wheel) จะมีธรรมชาติในการวิ่งส่ายไปมาเป็นรูปคลื่นไซน์ (Sinusoidal Path) คล้ายงูเลื้อย เมื่อรถไฟทำความเร็วสูงถึงจุด "ความเร็ววิกฤต" (Critical Speed) การส่ายนี้จะเกิดการสั่นพ้อง (Resonance) อย่างรุนแรง ซึ่งเรียกว่าปรากฏการณ์ Hunting Oscillation</li>
+            <li>การหยุดยั้งหายนะ: หากปล่อยให้แคร่ล้อแกว่งอย่างรุนแรงโดยไม่มีการควบคุม ล้ออาจปีนสันรางและทำให้รถไฟตกรางได้ (Derailment) Yaw Damper จะทำหน้าที่ดูดซับพลังงานจลน์จากการส่ายนี้ และจำกัดแอมพลิจูด (Amplitude) ของการแกว่งให้อยู่ในขอบเขตที่ปลอดภัย ช่วยดันเพดานความเร็วสูงสุดของรถไฟให้เพิ่มขึ้นได้อย่างมหาศาล</li>
         </ul>
-        <h3>ค่ามาตรฐาน</h3>
+        <p>2. กลไกการหน่วงแบบพึ่งพาความเร็ว (Velocity-Dependent Damping)</p>
         <ul>
-            <li>มักเป็นแดมเปอร์ชนิดไฮดรอลิก ออกแบบให้ทนต่ออุณหภูมิและแรงสั่นสะเทือนสูง</li>
-            <li>ใช้มาตรฐานวัสดุเหล็กกล้าและซีลยางตาม EN 10083 และมาตรฐานชิ้นส่วนกันสะเทือนสำหรับรถไฟของยุโรป</li>
+            <li>โช้คอัพประเภทนี้ทำงานด้วยระบบ ไฮดรอลิก (Hydraulic System) ซึ่งมีหลักการสำคัญคือ "แรงต้านจะแปรผันตามความเร็วในการยืด-ยุบตัว"</li>
+            <li>อัจฉริยภาพเชิงกล: * เมื่อเข้าโค้งปกติ (ความเร็วการบิดตัวต่ำ): แคร่ล้อจะค่อยๆ หมุนบิดตัวไปตามโค้ง Yaw Damper จะยอมให้ตัวและยืด-ยุบได้อย่างนุ่มนวล โดยไม่สร้างแรงต้านทานการเลี้ยว (Low resistance at low frequencies)
+                <ul>
+                    <li>เมื่อเกิดการส่าย Hunting (ความเร็วการบิดตัวสูง): แคร่ล้อจะสะบัดซ้ายขวาอย่างรวดเร็วและรุนแรง น้ำมันไฮดรอลิกภายในโช้คอัพจะไหลผ่านวาล์วแคบๆ ไม่ทัน ทำให้เกิดแรงต้านทานมหาศาล (High resistance at high frequencies) เพื่อล็อกและหน่วงการส่ายนั้นไว้ทันที</li>
+                </ul>
+            </li>
         </ul>
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <p>3. การควบคุมพฤติกรรมการบิดตัว (Yaw Kinematics Control)</p>
+        <ul>
+            <li>Yaw Damper ทำหน้าที่ต้านทานและควบคุมโมเมนต์การบิดตัวรอบแกน Z (Vertical Axis) ป้องกันไม่ให้แคร่ล้อหมุนทำมุมสัมพัทธ์กับตัวตู้รถไฟมากหรือเร็วจนเกินไป โดยเฉพาะเมื่อรถไฟวิ่งผ่านประแจสับราง (Turnouts) หรือทางตรงที่มีความไม่สม่ำเสมอของราง (Track Irregularities)</li>
+        </ul>
+        <p>4. การยกระดับความนุ่มนวลและเสถียรภาพ (Ride Quality & Passenger Comfort)</p>
+        <ul>
+            <li>การแกว่งซ้าย-ขวาอย่างรุนแรงของแคร่ล้อ จะส่งผลให้เกิด "แรงกระชากด้านข้าง" (Lateral Jerk) ทะลุขึ้นไปยังห้องโดยสาร ซึ่งทำให้ผู้โดยสารรู้สึกถูกเหวี่ยง เวียนศีรษะ และเดินทรงตัวลำบาก การมี Yaw Damper จะช่วยแยกส่วน (Decouple) ความสั่นสะเทือนทางขวางนี้ ทำให้การเดินทางนุ่มนวลและมีเสถียรภาพ เป็นไปตามมาตรฐานความสะดวกสบายสากล</li>
+        </ul>
+        <p>5. การลดการสึกหรอเชิงเศรษฐศาสตร์ (Wear & Tear Reduction)</p>
+        <ul>
+            <li>เมื่อการส่าย Hunting ถูกกำราบลง โอกาสที่หน้าแปลนล้อ (Wheel Flange) จะพุ่งเข้าไปเสียดสีและกระแทกกับสันรางอย่างรุนแรงก็จะลดลงตามไปด้วย</li>
+            <li>ในมุมมองของวิศวกรรมการบำรุงรักษา (Maintenance Engineering) Yaw Damper ถือเป็นอุปกรณ์ที่ช่วยยืดอายุการใช้งานของโปรไฟล์ล้อและรางได้อย่างมีประสิทธิภาพ ช่วยลดงบประมาณในการซ่อมบำรุง หรือการต้องนำรถไฟไปกลึงล้อ (Wheel Reprofiling) บ่อยๆ ลงได้อย่างมหาศาล</li>
+        </ul>
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0o1aYy0W7ptTmCEagaz8EQFpD21VU_Jbcoln5bJKxP6s9Kg/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 

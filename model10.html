@@ -21,11 +21,11 @@
     <div class="container">
         <a href="index.html" class="nav-brand">
             <div class="nav-brand-icon">⚙️</div>
-            <h1>QR Anatomy 3D</h1>
+            <h1>Bogie 3D Explorer</h1>
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+            <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,7 +62,7 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Centre Plate
     </div>
     <div class="page-header">
-        <h1>Centre Plate</h1>
+        <h1>Centre Plate - แผ่นรองรับน้ำหนักที่จุดหมุน(แผ่นรองรับกลาง)</h1>
         <span class="part-badge">Part 10</span>
     </div>
     <div class="model-viewer" id="model1">
@@ -73,15 +73,46 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Centre Plate</h2>
+        <div class="header-row">
+    <h2>รายละเอียดของ Centre Plate</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeBUKACM2UnOv8eQ5v-OlfTXgN-iiOk__QZY9mSqqtJFS8sdw/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
         
-        <h3>หน้าที่ของ Centre Plate</h3>
-        <p>&emsp;Centre Plate เป็นจานหมุนหลักที่อยู่ด้านบนของ Bolster ทำหน้าที่ถ่ายน้ำหนักจากตัวรถลงสู่โบกี้ เป็นจุดศูนย์กลางในการรับน้ำหนักและช่วยให้โบกี้หมุนเปลี่ยนทิศทางใต้ตัวรถเมื่อรถไฟเข้าโค้ง</p>
-        <h3>ค่ามาตรฐาน</h3>
-        
-            <p>&emsp;Center Plate จะต้องหล่อหรือตีขึ้นรูปจากเหล็กกล้าที่มีความทนทานสูงและผ่านการอบชุบความร้อน (Heat Treatment) AAR M-201 Grade B, C, หรือ D: เป็นข้อกำหนดหลักสำหรับเหล็กหล่อที่ใช้ในการผลิตชิ้นส่วนโบกี้ รวมถึง Center Plate วัสดุเหล่านี้ต้องมีคุณสมบัติที่ทนทานต่อแรงกด (Compression Load), แรงเฉือน (Shear Load), และความล้า (Fatigue)</p>
-        
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <h3>หน้าที่และหลักการทำงานทางวิศวกรรมของ Centre Plate (แผ่นรองรับน้ำหนักที่จุดหมุนกลาง)</h3>
+       <p>ในวิศวกรรมระบบล้อเลื่อน (Rolling Stock Engineering) Centre Plate (แผ่นรองรับน้ำหนักที่จุดหมุนกลาง) หรือที่มักเรียกกันว่า "จานหมุนหลัก" เปรียบเสมือน "ข้อต่อสะโพก" ของขบวนรถไฟ โดยติดตั้งอยู่บริเวณกึ่งกลางด้านบนของ Bolster (คานขวางหลัก) ทำหน้าที่เป็นจุดสัมผัสและจุดถ่ายเทน้ำหนักที่สำคัญที่สุดระหว่าง โครงสร้างส่วนล่างของตู้รถไฟ (Car Body Underframe) กับ แคร่ล้อ (Bogie)</p>
+        <p>แม้จะดูเหมือนเป็นเพียงแผ่นเหล็กประกบกัน แต่ในเชิงวิศวกรรม Centre Plate มีหน้าที่และหลักการทำงานที่ซับซ้อน ดังนี้</p>
+        <p>1. การรับและกระจายน้ำหนักแนวดิ่ง (Vertical Load Bearing & Distribution)</p>
+        <ul>
+            <li>ศูนย์กลางการรับน้ำหนัก: Centre Plate เป็นจุดที่รับน้ำหนักมหาศาล (โครงสร้างตู้รถไฟและผู้โดยสารทั้งหมด) ที่กดทับลงมาตรงกึ่งกลางของแคร่ล้อ โดยจะรับภาระแรงกดทับ (Compressive Stress) สูงสุด</li>
+            <li>ลักษณะโครงสร้าง: มักถูกออกแบบให้มีลักษณะเป็นเบ้าหรือชาม (Center Bowl) บนแคร่ล้อ สวมเข้ากับแผ่นจานนูน (Center Plate) ที่ยื่นลงมาจากใต้ท้องรถไฟ ลักษณะความโค้งหรือพื้นผิวสัมผัสที่กว้างนี้ จะช่วยกระจายแรงกดทับไม่ให้ไปกระจุกตัวอยู่ ณ จุดใดจุดหนึ่ง ป้องกันการแตกร้าวของโครงสร้าง</li>
+        </ul>
+        <p>2. พลศาสตร์การหมุนอิสระขณะเข้าโค้ง (Rotational Kinematics & Yaw Motion)</p>
+        <ul>
+            <li>กลไกการเลี้ยวของรถไฟ: เมื่อรถไฟวิ่งเข้าสู่ทางโค้ง รางจะบังคับให้แคร่ล้อเลี้ยวไปตามรัศมีโค้ง ในขณะที่ตัวตู้รถไฟซึ่งมีความยาวและหนักมากจะยังมีแรงเฉื่อยพุ่งไปข้างหน้า Centre Plate จะทำหน้าที่เป็น "จานรองหมุน" (Swivel Joint) ที่อนุญาตให้แคร่ล้อสามารถหมุนบิดตัว (Yaw) ทำมุมสัมพัทธ์กับใต้ท้องรถไฟได้อย่างอิสระ</li>
+            <li>ป้องกันแรงงัดทางกล: หากไม่มีจานหมุนนี้ หรือจานหมุนเกิดการล็อกตาย แคร่ล้อจะไม่สามารถเลี้ยวโค้งได้ ซึ่งจะสร้างแรงงัดมหาศาล (Binding Force) ทำให้หน้าแปลนล้อปีนข้ามสันรางและเกิดอุบัติเหตุตกราง (Derailment) ทันที</li>
+        </ul>
+        <p>3. วิศวกรรมการจัดการแรงเสียดทาน (Tribology & Friction Management)</p>
+        <ul>
+            <li>ความท้าทายเรื่องความฝืด: น้ำหนักที่กดทับหลายสิบตันย่อมสร้างแรงเสียดทาน (Friction) มหาศาลขณะที่จานเหล็กสองแผ่นเสียดสีและหมุนเข้าโค้ง วิศวกรจึงต้องควบคุม "แรงต้านทานการหมุน" (Rotational Resistance) ให้อยู่ในค่ามาตรฐานที่คำนวณไว้</li>
+            <li>แผ่นรองลื่น (Wear Liners): ภายใน Centre Plate จะมีการติดตั้งแผ่นรองลื่นที่ทำจากวัสดุพิเศษ เช่น โพลิเมอร์วิศวกรรมทนแรงกดสูง (Engineering Plastics/Nylon) หรือเหล็กกล้าแมงกานีส (Manganese Steel) พร้อมทั้งมีระบบสารหล่อลื่น (Lubrication) เพื่อให้จานหมุนสามารถขยับตัวได้อย่างราบรื่นที่สุด และลดการสึกหรอของเนื้อโลหะหลัก</li>
+        </ul>
+        <p>4. การถ่ายทอดแรงในแนวขอบจาน (Lateral & Longitudinal Shear Transmission)</p>
+        <ul>
+            <li>นอกจากพื้นผิวแนวนอนที่รับน้ำหนักแล้ว "ขอบด้านข้าง" ของ Centre Plate (บริเวณผนังของ Center Bowl) ยังทำหน้าที่ประคองและรับแรงเฉือน (Shear Force) ในแนวแกน X (แรงเบรก/แรงดึง) และแนวแกน Y (แรงเหวี่ยงด้านข้าง) ร่วมกับสลักจุดหมุนกลาง (Center Pivot / Center Pin) เพื่อให้แคร่ล้อและตัวรถไฟยังคงยึดติดเป็นศูนย์กลางเดียวกัน ไม่ไถลหลุดออกจากกันเมื่อเจอแรงกระแทกอย่างรุนแรง</li>
+        </ul>
+        <p>5. การทำงานร่วมกับระบบกันโคลง (Integration with Side Bearers)</p>
+        <ul>
+            <li>ในการออกแบบแคร่ล้อส่วนใหญ่ Centre Plate จะไม่ได้ทำงานเพียงลำพัง แต่มักจะถูกออกแบบมาให้เป็นจุดศูนย์กลางรับน้ำหนักประมาณ 70-100% (ขึ้นอยู่กับประเภทรถไฟ) โดยจะทำงานประสานกับ Side Bearers (แผ่นรองรับน้ำหนักด้านข้าง) ที่คอยประคองอยู่ซ้าย-ขวา เพื่อจำกัดไม่ให้ตู้รถไฟโคลงตัว (Roll) มากเกินไปเมื่อวิ่งด้วยความเร็วสูงหรือเมื่อเจอลมปะทะด้านข้าง</li>
+        </ul>
+
+
+
+
+
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRUnoE3Et9-WkuwXUnl7rCbNA6VRkg941_PYHUwya_wuPCzg/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 

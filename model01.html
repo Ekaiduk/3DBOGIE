@@ -21,11 +21,11 @@
     <div class="container">
         <a href="index.html" class="nav-brand">
             <div class="nav-brand-icon">⚙️</div>
-            <h1>QR Anatomy 3D</h1>
+            <h1>Bogie 3D Explorer</h1>
         </a>
         <ul class="nav-menu" id="navMenu">
             <li><a href="index.html#home" class="nav-link">หน้าแรก</a></li>
-            <li><a href="index.html#about" class="nav-link">เกี่ยวกับโครงการ</a></li>
+            <li><a href="aboutproject.html" class="nav-link">เกี่ยวกับ Bogie 3D Explorer</a></li>
             <li class="dropdown">
                 <a href="#" class="nav-link active">โมเดล 3D</a>
 
@@ -62,7 +62,7 @@
         <a href="index.html">หน้าแรก</a> › <a href="index.html#models">โมเดล 3D</a> › Bolster
     </div>
     <div class="page-header">
-        <h1>Bolster</h1>
+        <h1>Bolster - คานขวางหลักสำหรับรับน้ำหนัก</h1>
         <span class="part-badge">Part 01</span>
     </div>
     <div class="model-viewer" id="model1">
@@ -73,22 +73,42 @@
         <div class="controls-hint">🖱️ ลากเพื่อหมุน • เลื่อนเพื่อซูม</div>
     </div>
     <div class="model-detail">
-        <h2>รายละเอียดของ Bolster</h2>
-        <h3>หน้าที่ของ Bolster</h3>
+        <div class="header-row">
+    <h2>รายละเอียดของ Bolster - คานขวางหลักสำหรับรับน้ำหนัก</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfr1mSCuoy7oYF-dncnqYni7S-1rwcVqAngao9udF8hB7Rpbg/viewform?usp=header" class="PrePostTest-btn" target="_blank">แบบทดสอบก่อนเรียน</a>
+</div>
+        <h3>หน้าที่และหลักการทำงานทางวิศวกรรมของ Bolster: คานขวางหลักสำหรับรับน้ำหนัก</h3>
+        <p>ในทางวิศวกรรมระบบราง Bolster (คานขวางหลักสำหรับรับน้ำหนัก) ไม่ได้เป็นเพียง "คานเหล็ก" ธรรมดา แต่ถือเป็น "ชิ้นส่วนตัวกลางทางพลศาสตร์" (Dynamic Interface Component) ที่มีความสำคัญอย่างยิ่ง โดยทำหน้าที่แยกส่วน (Decouple) การสั่นสะเทือนระหว่างแคร่ล้อ (Bogie) ที่สัมผัสกับรางโดยตรง ออกจากตัวตู้รถโดยสาร (Car Body)
+หน้าที่หลักในเชิงวิศวกรรมของ Bolster สามารถแบ่งออกเป็น 5 ประการสำคัญ ดังนี้</p>
+<p>1. การรับและกระจายน้ำหนักแนวดิ่ง (Vertical Load Transfer & Distribution)</p>
         <ul>
-            <li>ทำหน้าที่เป็นคานรับน้ำหนักหลักของตู้รถไฟ (Car Body) และถ่ายเทน้ำหนักลงสู่โครงโบกี้ (Bogie Frame)</li>
-            <li>เป็นจุดเชื่อมต่อสำคัญที่ช่วยให้ตัวรถสามารถหมุนตัวเหนือโบกี้ได้ในขณะที่รถไฟเข้าโค้ง โดยมีจุดหมุนกลาง (Center Pivot)</li>
-            <li>โบลสเตอร์ (Bolster) จะทำงานร่วมกับระบบรองรับน้ำหนักชั้นที่สอง ซึ่งอาจเป็นสปริง ถุงลม หรือระบบอื่นๆ เพือดูดซับแรงสั่นสะเทือนและแรงกกระแทกจากรถไฟ ช่วยเพิ่มความนุ่มนวลในการเดินทางและลดความเสียหายต่อสิ้นค้าและตัวรถ</li>
-            <li>ช่วยควบคุมการเคลื่อนที่ด้านข้าง (Lateral Motion) และโคลงตัวของตัวรถไฟ เพื่อให้การวิ่งบนรางมึความเสถียรและปลอดภัย โดยเฉพาะเมื่อใช้ความเร็วสูงหรือเข้าโค้ง</li>
+            <li>เส้นทางการถ่ายเทน้ำหนัก (Load Path): Bolster เปรียบเสมือนสะพานรับน้ำหนักมหาศาลจากตัวตู้รถไฟ (Car Body Mass) โดยจะรับน้ำหนักที่กดทับลงมา และกระจายผ่านระบบสปริงหรือเบาะลม (Secondary Suspension) ลงสู่โครงแคร่ล้อ (Bogie Frame) ก่อนถ่ายเทลงสู่เพลา ล้อ (Wheelset) และรางในที่สุด</li>
+            <li>การออกแบบโครงสร้าง: เนื่องจากต้องรับภาระความเค้น (Stress) สูงและเสี่ยงต่อการล้า (Fatigue) Bolster จึงมักถูกออกแบบด้วยเหล็กกล้าทนแรงดึงสูง หรือใช้โครงสร้างแบบกล่องเชื่อมประกอบ (Box-section Welded Structure) เพื่อให้ได้ความแข็งแรงสูงสุดควบคู่กับน้ำหนักที่เบา (High Stiffness-to-Weight Ratio)</li>
         </ul>
-        <h3>ค่ามาตรฐาน</h3>
+        <p>2. พลศาสตร์การเข้าโค้งและการจัดการแรงบิด (Curving Kinematics & Yaw Motion)</p>
         <ul>
-            <li>UIC (ยุโรป / เอเชีย)</li>
-            <li>UIC 515-4 — ข้อกำหนดโครงสร้าง bogie รวม bolster</li>
-            <li>UIC 615-4 — มาตรฐานการผลิตเหล็กหล่อ bolster</li>
-            <li>UIC 518 — การทดสอบแรง ความแข็งแรง และ fatigue</li>
+            <li>จุดหมุนอิสระ (Free Rotation): เมื่อรถไฟวิ่งเข้าโค้ง ล้อและแคร่จะต้องบิดตัวไปตามรัศมีโค้ง Bolster จะทำหน้าที่นี้ผ่าน เซ็นเตอร์พีวอท (Center Pivot / สลักจุดหมุนกลาง) ซึ่งเป็นแกนหมุนแนวดิ่ง (Yaw Axis) ที่ช่วยให้แคร่ล้อสามารถหมุนทำมุมสัมพัทธ์กับตัวตู้รถไฟได้อย่างเป็นอิสระ</li>
+            <li>การลดแรงเสียดทาน: บริเวณจุดหมุนและจุดสัมผัส (Side Bearers) จะมีการใช้วัสดุลดแรงเสียดทาน (Friction Liners) เพื่อป้องกันไม่ให้เกิดแรงต้านทานการหมุน (Rotational Resistance) มากเกินไป ซึ่งหากฝืดเกินไป อาจส่งผลให้ล้อปีนรางและเกิดอุบัติเหตุรถไฟตกราง (Derailment) ได้</li>
         </ul>
-        <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+        <p>3. การถ่ายทอดแรงดึงและแรงเบรก (Longitudinal Force Transmission)</p>
+        <ul>
+            <li>มอเตอร์ขับเคลื่อน (Traction Motor) และระบบเบรก (Brake System) ซึ่งมักติดตั้งอยู่บนโครงแคร่ล้อ จะสร้างแรงดึง (Traction) เมื่อเร่งความเร็ว และเกิดแรงเฉื่อยเมื่อเบรก (Braking Force)</li>
+        <li>Bolster จะทำหน้าที่เป็นแกนหลักในการถ่ายทอดแรงเหล่านี้ในแนวแกน X (Longitudinal X-axis) ไปยังตัวตู้รถไฟที่มีน้ำหนักมหาศาล โดยมักส่งผ่านก้านดึงที่เรียกว่า Traction Rod หรือ Traction Link เพื่อดึงให้ตัวรถเคลื่อนที่หรือหยุดตามแคร่ล้อไปได้อย่างมั่นคง</li>
+        </ul>
+        <p>4. การจัดการความสั่นสะเทือนและความนุ่มนวล (Vibration Decoupling & Ride Quality)</p>
+        <ul>
+            <li>การทำงานร่วมกับระบบช่วงล่างชั้นที่ 2 (Secondary Suspension): Bolster ทำหน้าที่เป็นฐานรองรับ เบาะลม (Air Springs) หรือ สปริงขด (Coil Springs) เมื่อล้อรถไฟกระแทกกับรอยต่อรางหรือความขรุขระ แรงสั่นสะเทือนความถี่สูงจะพุ่งขึ้นมาที่แคร่ Bolster และระบบสปริงจะทำงานประสานกันเพื่อกรองและดูดซับแรงกระแทก (Damping) ก่อนที่จะส่งถึงห้องโดยสาร ช่วยยกระดับค่าดัชนีความนุ่มนวลในการโดยสาร (Ride Comfort Index) ให้เป็นไปตามมาตรฐานสากล</li>
+        </ul>
+        <p>5. การรักษาเสถียรภาพการเอียงและการเคลื่อนที่ด้านข้าง (Roll Stability & Lateral Motion)</p>
+        <ul>
+            <li>เสถียรภาพการโคลง (Roll Dynamics): ขณะรถไฟวิ่งด้วยความเร็วสูงหรือเผชิญลมปะทะด้านข้าง (Crosswind) ตู้รถไฟมีโอกาสโคลงตัว Bolster จะทำงานร่วมกับ ไซด์แบร์เรอร์ (Side Bearers - แผ่นรองรับน้ำหนักด้านข้าง) และ แอนตี้โรลบาร์ (Anti-roll Bar) เพื่อสร้างแรงต้านทานการโคลงตัว (Roll Stiffness) ป้องกันไม่ให้จุดศูนย์ถ่วง (CG) ของตัวรถเหวี่ยงออกนอกฐานล้อ</li>
+        <li>ระยะรุนด้านข้าง (Lateral Clearance): Bolster ถูกออกแบบให้มีช่องว่างให้ตัวรถขยับซ้ายขวาได้เล็กน้อย (Lateral Play) โดยมีตัวหยุดด้านข้าง (Lateral Bump Stops) คอยควบคุมขีดจำกัด เพื่อช่วยลดแรงเหวี่ยงหนีศูนย์กลาง (Centrifugal Force) ที่จะกระทำต่อผู้โดยสาร</li>
+        </ul>
+
+<div class="btn-container">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSescNPZ0myhn2vkU4IXJ-_f_perwzwHcYx7ALwQAqoP3PH3HA/viewform?usp=publish-editor" class="PrePostTest-btn" target="_blank">แบบทดสอบหลังเรียน</a>
+    <a href="index.html#models" class="back-btn">← กลับไปหน้าโมเดล</a>
+</div>
     </div>
 </div>
 
